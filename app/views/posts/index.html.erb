@@ -1,1 +1,17 @@
 <h1>hihi</h1>
+<table>
+  <tr>
+  <% @post.each do |p| %>
+    <td>
+      <%= p.topic %>
+    </td>
+    <td>
+      <%= link_to '閱讀', posts_path %>
+      <%= link_to '編輯', posts_path %>
+      <%= link_to '刪除', posts_path %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to '新增文章', new_post_path %>

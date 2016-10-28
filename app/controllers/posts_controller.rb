@@ -8,6 +8,10 @@ class PostsController < ApplicationController
   end
   
   def create
+    @post = Post.new(post_params)
+    @post.save
+    
+    redirect_to posts_path
   end
   
   def edit
@@ -23,7 +27,8 @@ private
   def set_post
   end
   
-  def set_params
+  def post_params
+    params.require(:post).permit(:topic, :content, :user_id)
   end
   
 end
