@@ -6,9 +6,9 @@
       <%= p.topic %>
     </td>
     <td>
-      <%= link_to '閱讀', posts_path %>
-      <%= link_to '編輯', posts_path %>
-      <%= link_to '刪除', posts_path %>
+      <%= link_to '閱讀', post_path(p) %>
+      <%= link_to '編輯', posts_path(p) %>
+      <%= link_to '刪除', posts_path(p) %>
     </td>
   </tr>
   <% end %>
