@@ -8,7 +8,7 @@
     <td>
       <%= link_to '閱讀', post_path(p) %>
       <%= link_to '編輯', edit_post_path(p) %>
-      <%= link_to '刪除', posts_path %>
+      <%= link_to '刪除', post_path(p),:method => :delete, :data => { :confirm => "Are you sure?" } %>
     </td>
   </tr>
   <% end %>

@@ -18,7 +18,6 @@ class PostsController < ApplicationController
   def show
   end
   
-  
   def edit
   end
   
@@ -27,8 +26,9 @@ class PostsController < ApplicationController
     redirect_to post_path(@post)
   end
   
-  
   def destroy
+    @post.destroy
+    redirect_to posts_path
   end
 
 private
