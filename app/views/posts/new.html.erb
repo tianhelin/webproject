@@ -1,0 +1,6 @@
+<%= form_for @post do |f| %>
+<%= render :partial => 'form', :locals => {:f => f} %>
+<%= f.submit "發表" %>
+<% end %>
+
+<p><%= link_to '回首頁' , posts_path %></p>
