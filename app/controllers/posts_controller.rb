@@ -1,7 +1,21 @@
 class PostsController < ApplicationController
  before_action :set_post, :only => [:show,:edit,:update,:destroy]
+ before_action :authenticate_user!, :only => [:new,:create,:edit,:update,:destroy]
+ 
   def index
-    @post = Post.all
+    if params[:alldata] =="y"
+      @posts = Post.all
+      @posts = @posts.page(params[:page]).per(5)
+    else
+      @posts = Post.where(created_at: (Time.now - 1200)..Time.now)
+      if params[:sort] == "class"
+        @posts = @posts.order( 'posttype_id ASC' )
+        @posts = @posts.page(params[:page]).per(5)
+      else
+        @posts = @posts.page(params[:page]).per(5)
+      end
+    end
+    
   end
   
   def new
@@ -9,7 +23,7 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
     @post.save
     
     redirect_to posts_path
@@ -37,7 +51,7 @@ private
   end
   
   def post_params
-    params.require(:post).permit(:topic, :content, :user_id)
+    params.require(:post).permit(:topic, :content, :user_id, :posttype_id)
   end
   
 end

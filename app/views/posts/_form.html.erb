@@ -1,6 +1,9 @@
 <%= f.label :topic ,'標題' %>
 <%= f.text_field :topic %>
 <br>
+<%= f.label :posttype_id ,'分類' %>
+<%= f.collection_select(:posttype_id, Posttype.all, :id, :typename) %>
+<br>
 <%= f.label :content, '內文' %>
 <%= f.text_area :content %>
 

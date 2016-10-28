@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-headerpull-right">
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+        <li>
+          <%= link_to('登出', destroy_user_session_path, :method => :delete) %>
+        </li>
+        <li>
+          <%= link_to('修改密碼', edit_registration_path(:user)) %>
+        </li>
+          <% else %>
+        <li>
+          <%= link_to('註冊', new_registration_path(:user)) %>
+        </li>
+        <li>
+          <%= link_to('登入', new_session_path(:user)) %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

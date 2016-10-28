@@ -1,4 +1,7 @@
 <h1>
+  <%= '[' %>
+  <%=  Posttype.find(@post.posttype_id).typename  %>
+  <%= ']' %>
   <%= @post.topic %>
 </h1>
 <%= simple_format(@post.content) %>
