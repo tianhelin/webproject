@@ -2,21 +2,26 @@ class PosttypesController < ApplicationController
 
 def index
   @posttypes = Posttype.all
-end
-
-def new
+  @posttype = Posttype.new
 end
 
 def create
+  @posttype = Posttype.new(posttype_params)
+  @posttype.save(posttype_params)
+  redirect_to posttypes_path
 end
 
-def edit
-end
-
-def update
-end
 
 def destroy
+  @posttype = Posttype.find(params[:id])
+  @posttype.destroy
+  redirect_to posttypes_path
+end
+
+private
+
+def posttype_params
+  params.require(:posttype).permit(:typename, :user_id)
 end
 
 end

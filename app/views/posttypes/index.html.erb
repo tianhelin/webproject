@@ -1,15 +1,22 @@
 <h1>hihi</h1>
 <table>
   <tr>
-    <% @posttypes.each do |posttype| %>
+  <% @posttypes.each do |posttype| %>
     <td>
       <%= posttype.typename %>
     </td>
     <td>
       <%= link_to '刪除分類', posttype_path(posttype), :method => :delete, :data => { :confirm => "確定刪除? 將會連同此分類之文章一起刪除" }, :class => "btn btn-default" %>
     </td>
+    
   </tr>
   <% end %>
-  
-  
 </table>
+
+<%= form_for @posttype do |f| %>
+  <%= f.label :typename ,'新增分類名稱' %>
+  <%= f.text_field :typename %>
+  <%= f.submit "新增" %>
+<% end %>
+
+<%= link_to '回首頁', posts_path , :class => "btn btn-default" %>
