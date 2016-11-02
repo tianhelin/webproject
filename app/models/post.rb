@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   belongs_to :posttype
 
 def adminornot?(user)
-  user && user.id == 1
+  user && user.adminkey == 1
 end
 
 end

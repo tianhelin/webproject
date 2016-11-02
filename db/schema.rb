@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028062439) do
+ActiveRecord::Schema.define(version: 20161102062849) do
+
+  create_table "news", force: :cascade do |t|
+    t.string   "topic"
+    t.string   "content"
+    t.string   "newclass"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "postclasses", force: :cascade do |t|
     t.string   "class"
@@ -47,6 +56,7 @@ ActiveRecord::Schema.define(version: 20161028062439) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "adminkey",               default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
