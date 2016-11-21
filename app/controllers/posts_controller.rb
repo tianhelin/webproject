@@ -3,19 +3,14 @@ class PostsController < ApplicationController
  before_action :authenticate_user!, :only => [:new,:create,:edit,:update,:destroy]
  
   def index
-    if params[:alldata] =="y"
-      @posts = Post.all
+    @posts = Post.all
+    if params[:sort] == "class"
+      @posts = @posts.order( 'posttype_id ASC' )
       @posts = @posts.page(params[:page]).per(5)
     else
-      @posts = Post.where(created_at: (Time.now - 1200)..Time.now)
-      if params[:sort] == "class"
-        @posts = @posts.order( 'posttype_id ASC' )
-        @posts = @posts.page(params[:page]).per(5)
-      else
-        @posts = @posts.page(params[:page]).per(5)
-      end
+      @posts = @posts.order( 'updated_at DESC' )
+      @posts = @posts.page(params[:page]).per(5)
     end
-    
   end
   
   def new
