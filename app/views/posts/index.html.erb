@@ -34,7 +34,10 @@
 <%= link_to '新舊排序', posts_path ,  :class => "btn btn-default" %>
 
 <% if Post.new.adminornot?(current_user) %>
-  <p><%= link_to '管理分類' , posttypes_path, :class => "btn btn-default" %></p>
+<p>
+  <%= link_to '分類管理' , posttypes_path, :class => "btn btn-default" %>
+  <%= link_to '帳戶管理' , accounts_path, :class => "btn btn-default" %>
+</p>
 <% end %>
 
 
