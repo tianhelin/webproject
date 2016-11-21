@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :posts
   resources :posttypes
+  resources :accounts
   root :to => 'posts#index'
   
   
