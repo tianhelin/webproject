@@ -16,10 +16,21 @@
       <%= account.birthday %>
     </td>
     <td>
-      <%= account.adminkey %>
+      <% @account = User.new %>
+      <%= form_for @account, url: account_path(account), html: {method: "put"} do |f| %>
+        <%= f.select(:adminkey, options_for_select([
+          ['學生', 0],
+          ['管理者', 1],
+          ['老師', 2],
+          ['家長', 3]
+        ], account.adminkey)) %>
+        <%= f.submit "更新權限", class: "btn btn-default" %>
+      <% end %>
     </td>
   </tr>
   <% end %>
 </table>
 
 <%= link_to '回首頁', posts_path ,  :class => "btn btn-default" %>
+
+
