@@ -4,6 +4,5 @@
 <%= f.label :posttype_id ,'分類' %>
 <%= f.collection_select(:posttype_id, Posttype.all, :id, :typename) %>
 <br>
-<%= f.label :content, '內文' %>
-<%= f.text_area :content %>
-
+<%= f.label :content,'內文' %>
+<%= f.cktext_area :content, cols: 40 %>
