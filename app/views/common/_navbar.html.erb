@@ -4,10 +4,15 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
         <li>
+        <%= 'Hi,' %>
+        <%= current_user.name %>
+        <%= '!' %>
+        </li>
+        <li>
           <%= link_to('登出', destroy_user_session_path, :method => :delete) %>
         </li>
         <li>
-          <%= link_to('修改密碼', edit_registration_path(:user)) %>
+          <%= link_to('帳號設定', edit_registration_path(:user)) %>
         </li>
           <% else %>
         <li>
