@@ -2,6 +2,7 @@ class PostsController < ApplicationController
  before_action :set_post, :only => [:show,:edit,:update,:destroy]
  before_action :authenticate_user!, :only => [:new,:create,:edit,:update,:destroy]
  
+ 
   def index
     @posts = Post.all
     if params[:sort] == "class"
@@ -48,5 +49,4 @@ private
   def post_params
     params.require(:post).permit(:topic, :content, :user_id, :posttype_id)
   end
-  
 end

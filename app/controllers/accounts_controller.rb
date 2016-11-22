@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+before_action :authenticate_user!, :checkadmin
 
 def index
   @accounts = User.all
