@@ -2,6 +2,7 @@ class AccountsController < ApplicationController
 
 def index
   @accounts = User.all
+  @accounts = @accounts.order('id DESC')
 end
 
 
