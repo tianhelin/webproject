@@ -10,8 +10,9 @@ class NoticesController < ApplicationController
   end
   
   def show
+    if current_user.id != Notice.find(params[:id]).recipient_id
+      redirect_to notices_path
+    end
   end
   
-private
-
 end
