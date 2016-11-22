@@ -4,6 +4,8 @@ class NoticesController < ApplicationController
   
   def index
     @notices = Notice.where('recipient_id = ?', current_user.id )
+    @notices = @notices.order('readed ASC')
+    @notices = @notices.order('created_at DESC')
     @notices = @notices.page(params[:page]).per(10)
   end
   
