@@ -4,7 +4,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
         <li>
-          <a href="#">
+          <a href="">
             Hi,
             <%= current_user.name %>
             !
@@ -12,10 +12,8 @@
         </li>
         <% if Notice.where("recipient_id = ? AND readed = ?", current_user.id , 0 ).exists? == true %>
           <li>
-            <a href="notices">
-              您有
-              <%= Notice.where("recipient_id = ? AND readed = ?", current_user.id , 0 ).count %>
-              個未讀通知
+            <a href="<%= notices_path %> ">
+              <%= '您有' + Notice.where("recipient_id = ? AND readed = ?", current_user.id , 0 ).count.to_s + '個未讀通知' %>
             </a>
           </li>
         <% else %>
