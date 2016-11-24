@@ -1,0 +1,31 @@
+<h1>
+  <% if params[:to] == 'all' %>
+    <%= '新增全站通知' %>
+  <% else %>
+    <%= '新增通知' %>  
+  <% end %>
+</h1>  
+  
+
+<%= form_for @notice do |f| %>
+  <%= f.label :topic ,'標題' %>
+  <%= f.text_field :topic %>
+  <br>
+  <%= f.label :content,'內文' %>
+  <%= f.cktext_area :content, cols: 40 %>
+  <% if params[:to] != 'all' %>
+    <h1>收件者：</h1></br>
+    <% User.all.each do |u| %>
+      <%= check_box_tag "recipient_id[]", u.id %>
+      <%= f.label :recipient_id, u.name %>
+    <% end %>
+    </br>
+    <%= f.submit '送出通知',:class => 'btn btn-default' %>
+  <% else %>
+    <%= f.submit '送出全站通知',:class => 'btn btn-default' %>
+  <% end %>
+<% end %>
+
+<p><%= link_to '回首頁' , posts_path, :class => 'btn btn-default' %></p>
+
+
