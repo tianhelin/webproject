@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
   validates :name,  presence: true
   has_many :posts
   has_many :notices
+  has_many :user_classroomships
+  has_many :classrooms, :through => :user_classroomships
 end
