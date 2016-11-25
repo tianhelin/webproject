@@ -15,6 +15,7 @@ end
 
 def destroy
   @posttype = Posttype.find(params[:id])
+  @posttype.posts.destroy_all
   @posttype.destroy
   redirect_to posttypes_path
 end
