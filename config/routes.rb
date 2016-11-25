@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :posts ,:posttypes ,:accounts, :notices
+  resources :posts ,:posttypes ,:accounts, :notices, :classrooms
 
   root :to => 'posts#index'
   

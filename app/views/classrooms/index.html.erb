@@ -1,0 +1,17 @@
+<h1>課程管理</h1>
+<table class="table">
+  <td>課程名稱</td>
+  <td>申請期限</td>
+  <% @classrooms.each do |classroom| %>
+    <tr>
+      <td>
+        <%= classroom.name %>
+      </td>
+      <td>
+        <%= classroom.applydeadline %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to '新增課程',new_classroom_path, :class => 'btn btn-default' %>
