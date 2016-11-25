@@ -1,0 +1,37 @@
+<h1>訊息列表</h1>
+<table class="table">
+  <td>讀取狀態</td>
+  <td>發信人</td>
+  <td>標題</td>
+  <td>發信時間</td>
+  <% @notices.each do |notice| %>
+  <tr>
+    <td>
+      <% if notice.readed == false  %>
+        <%= '尚未讀取' %>
+      <% else %>
+        <%= '' %>
+      <% end %>
+    </td>
+    <td>
+      <%= User.find(notice.user_id).name %>
+    </td>
+    <td>
+      <%= link_to notice.topic,notice_path(notice) %>
+    </td>
+    <td>
+      <%= notice.created_at %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<%= paginate @notices %>
+<br>
+
+<% if Post.new.adminornot?(current_user) %>
+  <%= link_to '發全站通知' , new_notice_path(:to => "all") ,:class => "btn btn-default" %>
+  <%= link_to '發個別通知' , new_notice_path ,:class => "btn btn-default" %>
+<% end %>
+
+<%= link_to '回首頁', posts_path , :class => "btn btn-default" %>

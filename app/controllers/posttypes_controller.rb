@@ -1,4 +1,5 @@
 class PosttypesController < ApplicationController
+before_action :authenticate_user!, :checkadmin
 
 def index
   @posttypes = Posttype.all
@@ -19,9 +20,7 @@ def destroy
 end
 
 private
-
-def posttype_params
-  params.require(:posttype).permit(:typename, :user_id)
-end
-
+  def posttype_params
+    params.require(:posttype).permit(:typename, :user_id)
+  end
 end

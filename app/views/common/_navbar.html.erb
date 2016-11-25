@@ -4,10 +4,25 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
         <li>
-        <%= 'Hi,' %>
-        <%= current_user.name %>
-        <%= '!' %>
+          <a href="">
+            Hi,
+            <%= current_user.name %>
+            !
+          </a>
         </li>
+        <% if Notice.where("recipient_id = ? AND readed = ?", current_user.id , 0 ).exists? == true %>
+          <li>
+            <a href="<%= notices_path %> ">
+              <%= '您有' + Notice.where("recipient_id = ? AND readed = ?", current_user.id , 0 ).count.to_s + '個未讀通知' %>
+            </a>
+          </li>
+        <% else %>
+          <li>
+            <a href="notices">
+              您沒有未讀通知
+            </a>
+          </li>
+        <% end %>
         <li>
           <%= link_to('登出', destroy_user_session_path, :method => :delete) %>
         </li>
