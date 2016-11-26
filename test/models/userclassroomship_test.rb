@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserClassroomshipTest < ActiveSupport::TestCase
+class UserclassroomshipTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
