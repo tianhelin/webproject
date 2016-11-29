@@ -14,7 +14,7 @@
       <%= p.updated_at %>
     </td>
     <td>
-      <% if p.adminornot?(current_user) %>
+      <% if adminornot?(current_user) %>
         <%= link_to '編輯', edit_post_path(p), :class => "btn btn-default" %>
         <%= link_to '刪除', post_path(p),:method => :delete, :data => { :confirm => "確定刪除?" }, :class => "btn btn-default" %>
       <% end %>
@@ -33,7 +33,7 @@
 <%= link_to '分類排序', posts_path(:sort => "class"), :class => "btn btn-default" %>
 <%= link_to '新舊排序', posts_path ,  :class => "btn btn-default" %>
 
-<% if Post.new.adminornot?(current_user) %>
+<% if adminornot?(current_user) %>
 <p>
   <%= link_to '分類管理' , posttypes_path, :class => "btn btn-default" %>
   <%= link_to '帳戶管理' , accounts_path, :class => "btn btn-default" %>

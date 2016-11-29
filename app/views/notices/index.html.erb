@@ -29,7 +29,7 @@
 <%= paginate @notices %>
 <br>
 
-<% if Post.new.adminornot?(current_user) %>
+<% if adminornot?(current_user) %>
   <%= link_to '發全站通知' , new_notice_path(:to => "all") ,:class => "btn btn-default" %>
   <%= link_to '發個別通知' , new_notice_path ,:class => "btn btn-default" %>
 <% end %>

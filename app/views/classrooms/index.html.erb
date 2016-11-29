@@ -10,8 +10,14 @@
       <td>
         <%= classroom.applydeadline %>
       </td>
+      <% if classroom.adminornot?(current_user) %>
+      <td>
+        <%= link_to '編輯',edit_classroom_path(classroom), :class => 'btn btn-default' %>
+      </td>
+      <% end %>
     </tr>
   <% end %>
 </table>
-
+<% if adminornot?(current_user) %>
 <%= link_to '新增課程',new_classroom_path, :class => 'btn btn-default' %>
+<% end %>

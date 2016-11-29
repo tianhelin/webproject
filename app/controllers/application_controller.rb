@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_in, keys: [:name,:birthday, :email, :password, :password_confirmation])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name,:birthday, :email, :password, :password_confirmation])
   end
-  
+private
   def checkadmin
     if current_user.adminkey != 1
       redirect_to posts_path

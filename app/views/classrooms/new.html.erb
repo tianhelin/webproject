@@ -1,0 +1,7 @@
+<h1>新增課程</h1>
+<%= form_for @classroom do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <%= f.submit '新增課程', :class => 'btn btn-default' %>
+<% end %>
+
+<%= link_to '回課程總覽', classrooms_path, :class => 'btn btn-default' %>

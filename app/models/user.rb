@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   has_many :notices
   has_many :userclassroomships
   has_many :classrooms, :through => :userclassroomships
+  
+def adminornot?(user)
+  user && user.adminkey == 1
+end
 end

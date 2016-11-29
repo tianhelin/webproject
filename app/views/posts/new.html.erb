@@ -1,6 +1,4 @@
-<h1>
-  <%= '新增文章' %>
-</h1>
+<h1>新增文章</h1>
 <%= form_for @post do |f| %>
 <%= render :partial => 'form', :locals => {:f => f} %>
 <%= f.submit "發表" ,:class => 'btn btn-default'%>
