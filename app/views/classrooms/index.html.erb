@@ -2,6 +2,9 @@
 <table class="table">
   <td>課程名稱</td>
   <td>申請期限</td>
+  <% if adminornot?(current_user) %>
+    <td>管理者功能</td>
+  <% end %>
   <% @classrooms.each do |classroom| %>
     <tr>
       <td>
@@ -10,7 +13,7 @@
       <td>
         <%= classroom.applydeadline %>
       </td>
-      <% if classroom.adminornot?(current_user) %>
+      <% if adminornot?(current_user) %>
       <td>
         <%= link_to '編輯',edit_classroom_path(classroom), :class => 'btn btn-default' %>
       </td>
@@ -19,5 +22,6 @@
   <% end %>
 </table>
 <% if adminornot?(current_user) %>
-<%= link_to '新增課程',new_classroom_path, :class => 'btn btn-default' %>
+  <%= link_to '新增課程',new_classroom_path, :class => 'btn btn-default' %>
 <% end %>
+<p><%= link_to '回首頁' , posts_path, :class => 'btn btn-default' %></p>

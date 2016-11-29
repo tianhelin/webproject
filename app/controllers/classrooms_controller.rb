@@ -21,6 +21,8 @@ class ClassroomsController < ApplicationController
   end
   
   def update
+    @classroom.update(classroom_params)
+    redirect_to classrooms_path
   end
   
   def destroy

@@ -1,6 +1,14 @@
 <h1>文章首頁</h1>
 <table class="table">
   <tr>
+    <tr>
+      <td>分類</td>
+      <td>文章標題</td>
+      <td>更新時間</td>
+      <% if adminornot?(current_user) %>
+        <td>管理者功能</td>
+      <% end %>
+    </tr>
   <% @posts.each do |p| %>
     <td>
       <%= '[' %>
