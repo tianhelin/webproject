@@ -26,6 +26,8 @@ class ClassroomsController < ApplicationController
   end
   
   def destroy
+    @classroom.destroy
+    redirect_to classrooms_path
   end
 
 private
