@@ -4,7 +4,7 @@ class ClassroomsController < ApplicationController
   before_action :checkadmin, :only => [:new,:create,:edit,:update,:destroy]
 
   def index
-    @classrooms = Classroom.all
+    @classrooms = current_user.classrooms.all.order('approved DESC')
   end
   
   def new
@@ -29,7 +29,7 @@ class ClassroomsController < ApplicationController
     @classroom.destroy
     redirect_to classrooms_path
   end
-
+  
 private
   def set_classroom
     @classroom = Classroom.find(params[:id])
