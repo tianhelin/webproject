@@ -1,7 +1,7 @@
 <h1>課程管理</h1>
 <table class="table">
   <td>課程名稱</td>
-  <td>申請期限</td>
+  <td>申請狀態</td>
   <% if adminornot?(current_user) %>
     <td>管理者功能</td>
   <% end %>
@@ -11,7 +11,11 @@
         <%= classroom.name %>
       </td>
       <td>
-        <%= classroom.applydeadline %>
+        <% if Userclassroomship.where('user_id = ? AND classroom_id = ?',current_user.id,classroom.id).first.approved %>
+          <%= '已加入課程' %>
+        <% else %>
+          <%= '等待審核中' %>
+        <% end %>
       </td>
       <% if adminornot?(current_user) %>
       <td>

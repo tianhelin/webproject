@@ -17,6 +17,9 @@ class ClassroomsController < ApplicationController
     redirect_to classrooms_path
   end
   
+  def show
+  end
+  
   def edit
   end
   
