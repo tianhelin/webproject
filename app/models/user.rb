@@ -12,4 +12,13 @@ class User < ActiveRecord::Base
 def adminornot?(user)
   user && user.adminkey == 1
 end
+
+def join!(classroom)
+  userclassroomships >> classroom
+end
+
+def quit!(classroom)
+  userclassroomships.delete(classroom)
+end
+
 end

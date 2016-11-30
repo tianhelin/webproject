@@ -4,7 +4,7 @@ class ClassroomsController < ApplicationController
   before_action :checkadmin, :only => [:new,:create,:edit,:update,:destroy]
 
   def index
-    @classrooms = current_user.classrooms.all.order('approved DESC')
+    @classrooms = current_user.classrooms.order('approved DESC')
   end
   
   def new
@@ -12,9 +12,8 @@ class ClassroomsController < ApplicationController
   end
   
   def create
-    @classroom = current_user.classrooms.new(classroom_params)
-    @classroom.save
-    redirect_to classrooms_path
+    @classroom = current_user.classrooms.create(classroom_params)
+    redirect_to userclassroomship_approved_path(:userclassroomship => {:user_id => current_user.id,:classroom_id => Classroom.last.id,:init => ""})
   end
   
   def show
