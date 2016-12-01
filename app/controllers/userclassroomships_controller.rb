@@ -15,7 +15,9 @@ class UserclassroomshipsController < ApplicationController
   end
   
   def apply
-    
+    @userclassroomship = Userclassroomship.new(:user_id => current_user.id , :classroom_id => params[:id])
+    @userclassroomship.save(apply_params)
+    redirect_to userclassroomships_path
   end
   
 
@@ -23,6 +25,8 @@ private
   def userclassroomship_params
     params.require(:userclassroomship).permit(:approved)
   end
-
-
+  
+  def apply_params
+    params.permit(:id)
+  end
 end

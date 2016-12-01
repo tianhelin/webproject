@@ -9,15 +9,7 @@ class User < ActiveRecord::Base
   has_many :userclassroomships
   has_many :classrooms, :through => :userclassroomships
   
-def adminornot?(user)
-  user && user.adminkey == 1
-end
-
-def join!(classroom)
-  userclassroomships >> classroom
-end
-
-def quit!(classroom)
-  userclassroomships.delete(classroom)
-end
+  def adminornot?(user)
+    user && user.adminkey == 1
+  end
 end
