@@ -20,5 +20,4 @@ end
 def quit!(classroom)
   userclassroomships.delete(classroom)
 end
-
 end

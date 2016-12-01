@@ -1,5 +1,6 @@
 class UserclassroomshipsController < ApplicationController
   def index
+    @classrooms = Classroom.all
   end
   
   def approved
@@ -13,10 +14,15 @@ class UserclassroomshipsController < ApplicationController
     end
   end
   
+  def apply
+    
+  end
   
+
 private
   def userclassroomship_params
     params.require(:userclassroomship).permit(:approved)
   end
+
 
 end

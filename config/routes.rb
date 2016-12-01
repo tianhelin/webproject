@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :posts ,:posttypes ,:accounts, :notices, :classrooms,:userclassroomships
+  get 'userclassroomship/apply/:id', :to => 'userclassroomships#apply'
   get 'userclassroomship/approved', :to => 'userclassroomships#approved'
+  
   root :to => 'posts#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

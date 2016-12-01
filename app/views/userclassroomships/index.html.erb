@@ -1,0 +1,20 @@
+<h1>加入新的課程</h1>
+<table class="table">
+  <% @classrooms.each do |classroom| %>
+    <tr>
+      <td>
+        <%= classroom.name %>
+      </td>
+      <td>
+        <%= classroom.applydeadline %>
+      </td>
+      <td>
+        <% if current_user.classrooms.include?(classroom) == false %>
+          <%= link_to '加入此課程',{:controller =>'userclassroomships',:action => 'apply',:id => classroom.id}, :class =>'btn btn-default' %>
+        <% else %>
+          <%= '已經加入課程' %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
