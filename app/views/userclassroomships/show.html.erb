@@ -1,0 +1,19 @@
+<p>
+  <div class="col-sm-3 text-center">使用者名稱</div>
+  <div class="col-sm-3 text-center">生日</div>
+  <div class="col-sm-3 text-center">電子郵件</div>
+  <div class="col-sm-3 text-center">是否通過</div>
+</p>
+<%= form_for @classroom , :url => userclassroomship_approved_path , html:{:method => 'GET'} do |f| %>
+  <% @classroom.users.each do |user| %>
+    <p>
+    <div class="col-sm-3 text-center"><%= user.name %></div>
+    <div class="col-sm-3 text-center"><%= user.birthday%></div>
+    <div class="col-sm-3 text-center"><%= user.email %></div>
+    <div class="col-sm-3 text-center"><%= check_box_tag 'userclassroomship[user_id][]', value = user.id %></div>
+    </p>
+  <% end %>
+  <%= hidden_field_tag 'userclassroomship[user_id][]','' %>
+  <%= hidden_field_tag 'userclassroomship[classroom_id][]',@classroom.id %>
+  <div class="col-sm-3 text-center"><%= f.submit '送出', :class => 'btn btn-default' %></div>
+<% end %>

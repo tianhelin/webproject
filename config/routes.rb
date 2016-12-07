@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :posts ,:posttypes ,:accounts, :notices, :classrooms,:userclassroomships
   get 'userclassroomship/apply/:id', :to => 'userclassroomships#apply'
   get 'userclassroomship/approved', :to => 'userclassroomships#approved'
+  get 'userclassroomship/mngindex', :to => 'userclassroomships#mngindex'
   
   root :to => 'posts#index'
   

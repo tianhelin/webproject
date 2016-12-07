@@ -1,0 +1,9 @@
+<h1>審核管理</h1>
+<table class="table">
+  <% @classrooms.each do |classroom| %>
+  <tr>
+    <td><%= link_to classroom.name,userclassroomship_path(classroom) %></td>
+    <td>待審核人數：<%= classroom.userclassroomships.where('approved=?',false).count %></td>
+  </tr>
+  <% end %>
+</table>
