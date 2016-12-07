@@ -13,8 +13,15 @@ class UserclassroomshipsController < ApplicationController
       @userclassroomship.update(userclassroomship_params)
       redirect_to classrooms_path
     else
-      raise
-      redirect_to userclassroomships_path
+      params[:userclassroomship][:user_id].each do |user_id|
+        @userclassroomship = Userclassroomship.where('user_id =? AND classroom_id=?', user_id,params[:userclassroomship][:classroom_id]).first
+        if user_id != ""
+          @userclassroomship.approved = true
+          @userclassroomship.update(userclassroomship_params)
+        else
+          redirect_to userclassroomship_mngindex_path
+        end
+      end
     end
   end
   
@@ -33,7 +40,7 @@ class UserclassroomshipsController < ApplicationController
 
 private
   def userclassroomship_params
-    params.require(:userclassroomship).permit(:approved)
+    params.require(:userclassroomship).permit(:approved,:user_id)
   end
   
   def apply_params

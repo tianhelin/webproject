@@ -6,14 +6,20 @@
 </p>
 <%= form_for @classroom , :url => userclassroomship_approved_path , html:{:method => 'GET'} do |f| %>
   <% @classroom.users.each do |user| %>
+    <% if Userclassroomship.where('user_id=? AND classroom_id =?',user.id,params[:id]).first.approved != true %>
     <p>
     <div class="col-sm-3 text-center"><%= user.name %></div>
     <div class="col-sm-3 text-center"><%= user.birthday%></div>
     <div class="col-sm-3 text-center"><%= user.email %></div>
     <div class="col-sm-3 text-center"><%= check_box_tag 'userclassroomship[user_id][]', value = user.id %></div>
     </p>
+    <% end %>
   <% end %>
   <%= hidden_field_tag 'userclassroomship[user_id][]','' %>
   <%= hidden_field_tag 'userclassroomship[classroom_id][]',@classroom.id %>
-  <div class="col-sm-3 text-center"><%= f.submit '送出', :class => 'btn btn-default' %></div>
+  <div class="col-sm-3">
+    <%= f.submit '送出', :class => 'btn btn-default' %>
+    <%= link_to '回到課程審核列表', userclassroomship_mngindex_path, :class => 'btn btn-default' %>
+  </div>
+  
 <% end %>
