@@ -26,9 +26,13 @@ class UserclassroomshipsController < ApplicationController
   end
   
   def apply
-    @userclassroomship = Userclassroomship.new(:user_id => current_user.id , :classroom_id => params[:id])
-    @userclassroomship.save(apply_params)
-    redirect_to userclassroomships_path
+    if Classroom.find(params[:id]).applydeadline <= Time.now
+      redirect_to userclassroomships_path, :alert => "已經超過申請期限！"
+    else
+      @userclassroomship = Userclassroomship.new(:user_id => current_user.id , :classroom_id => params[:id])
+      @userclassroomship.save(apply_params)
+      redirect_to userclassroomships_path
+    end
   end
   
   def mngindex
@@ -49,5 +53,9 @@ private
   
   def set_userclassroomship
     @classroom = Classroom.find(params[:id])
+  end
+  
+  def outofdate
+    flash[:warning] = "超過申請期限"
   end
 end
