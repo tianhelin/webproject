@@ -31,6 +31,8 @@ class UserclassroomshipsController < ApplicationController
     else
       @userclassroomship = Userclassroomship.new(:user_id => current_user.id , :classroom_id => params[:id])
       @userclassroomship.save(apply_params)
+      @notice = Notice.new :topic => "使用者#{current_user.name}申請課程#{Classroom.find(params[:id]).name}!", :content => '課程有新申請，請前往審核頁面確認！',:user_id => current_user.id, :recipient_id => '1'
+      @notice.save(notice_params)
       redirect_to userclassroomships_path
     end
   end
@@ -55,7 +57,7 @@ private
     @classroom = Classroom.find(params[:id])
   end
   
-  def outofdate
-    flash[:warning] = "超過申請期限"
+  def notice_params
+    params.permit(:id)
   end
 end
