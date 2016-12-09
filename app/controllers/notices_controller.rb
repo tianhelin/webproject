@@ -16,7 +16,7 @@ class NoticesController < ApplicationController
   
   def create
     if params[:commit] == "送出全站通知"
-      @recipient = User.all.id
+      @recipient = User.all.ids
     else
       @recipient = params[:recipient_id]
     end
