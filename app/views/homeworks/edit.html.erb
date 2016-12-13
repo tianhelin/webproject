@@ -1,0 +1,11 @@
+<h1>
+  <%= '編輯：' %>
+  <%= @homework.title %>
+</h1>
+
+<%= form_for @homework do |f| %>
+<%= render :partial => 'form', :locals => {:f => f} %>
+<%= f.submit "更新" ,:class => 'btn btn-default'%>
+<% end %>
+
+<p><%= link_to '回首頁' , posts_path,:class => 'btn btn-default' %></p>

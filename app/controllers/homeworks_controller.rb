@@ -24,6 +24,8 @@ class HomeworksController < ApplicationController
   end
   
   def update
+    @homework.update(homework_params)
+    redirect_to homework_path(@homework)
   end
   
   def destroy
