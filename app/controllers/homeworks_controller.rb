@@ -13,7 +13,9 @@ class HomeworksController < ApplicationController
   def create
     @homework = Homework.new(homework_params)
     @homework.save
-    Userhomeworkship.create(:user_id => current_user.id,:homework_id => @homework.id)
+    Classroom.find(@homework.classroom_id).users.each do |user|
+      Userhomeworkship.create(:user_id => user.id,:homework_id => @homework.id)
+    end
     redirect_to posts_path
   end
   
