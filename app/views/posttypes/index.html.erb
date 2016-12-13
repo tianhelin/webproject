@@ -6,7 +6,9 @@
       <%= posttype.typename %>
     </td>
     <td>
-      <%= link_to '刪除分類', posttype_path(posttype), :method => :delete, :data => { :confirm => "確定刪除? 將會連同此分類之文章一起刪除" }, :class => "btn btn-default" %>
+      <% if posttype.classroom_id == 0 %>
+        <%= link_to '刪除分類', posttype_path(posttype), :method => :delete, :data => { :confirm => "確定刪除? 將會連同此分類之文章一起刪除" }, :class => "btn btn-default" %>
+      <% end %>
     </td>
   </tr>
   <% end %>
