@@ -1,0 +1,10 @@
+<h1>編輯退件訊息</h1>
+<%= form_for @notice, :url => sendnotice_homeworkpost_path do |f| %>
+  <%= f.text_area :content %>
+  <%= hidden_field(:notice,:recipient_id ,:value => @notice.recipient_id) %>
+  <%= hidden_field(:homework,:homeworkpost_id,:value => params[:id]) %>
+  <%= hidden_field(:homework,:homework_id,:value => Homeworkpost.find(params[:id]).homework_id) %>
+    </br>
+  <%= f.submit '送出通知',:class => 'btn btn-default' %>
+<% end %>
+<p><%= link_to '回首頁' , posts_path, :class => 'btn btn-default' %></p>

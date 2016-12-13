@@ -10,7 +10,11 @@
   <h3>學員繳交</h3>
   <% @homework.homeworkposts.each do |post| %>
     <div class='post handin-<%= post.handin%>'>
-      <div class="post name"><%= User.find(post.user_id).name %>(<% if post.handin == true%>已繳<% else %>未繳<% end %>)</div>
+      <div class="post name">
+        <%= User.find(post.user_id).name %>
+        (<% if post.handin == true%>已繳<% else %>未繳<% end %>)
+        <%= link_to '退件',returnhomework_homeworkpost_path(post.id), :class => "btn btn-default" %>
+      </div>
       <div class="post content"><%= simple_format(post.content) %></div>
     </div>
   <% end %>
