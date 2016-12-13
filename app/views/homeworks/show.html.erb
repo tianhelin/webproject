@@ -9,8 +9,10 @@
 <% if current_user.adminkey_id == 1 %>
   <h3>學員繳交</h3>
   <% @homework.homeworkposts.each do |post| %>
-    <div class="post name"><%= User.find(post.user_id).name %></div>
-    <div class="post content"><%= post.content %></div>
+    <div class='post handin-<%= post.handin%>'>
+      <div class="post name"><%= User.find(post.user_id).name %>(<% if post.handin == true%>已繳<% else %>未繳<% end %>)</div>
+      <div class="post content"><%= simple_format(post.content) %></div>
+    </div>
   <% end %>
 <% else %>
   <h3>我的繳交結果：</h3>
