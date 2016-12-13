@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213031122) do
+ActiveRecord::Schema.define(version: 20161213062000) do
 
   create_table "adminkeys", force: :cascade do |t|
     t.string   "rolename"
@@ -24,6 +24,23 @@ ActiveRecord::Schema.define(version: 20161213031122) do
     t.date     "applydeadline"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "homeworkposts", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "homework_id"
+    t.boolean  "handin",      default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "homeworks", force: :cascade do |t|
+    t.string   "title"
+    t.string   "describe"
+    t.integer  "classroom_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "news", force: :cascade do |t|
