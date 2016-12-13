@@ -29,6 +29,8 @@ class HomeworksController < ApplicationController
   end
   
   def destroy
+    @homework.destroy
+    redirect_to posts_path
   end
   
 private

@@ -7,6 +7,12 @@
     <tr>
       <td><%= link_to homework.title,homework_path(homework) %></td>
       <td><%= homework.created_at %></td>
+      <% if current_user && current_user.adminkey_id == 1 %>
+        <td>
+          <%= link_to "編輯", edit_homework_path(homework), :class => "btn btn-default" %>
+          <%= link_to '刪除', homework_path(homework),:method => :delete, :data => { :confirm => "確定刪除?" }, :class => "btn btn-default" %>
+        </td>
+      <% end %>
     </tr>
     <% end %>
   </table>
