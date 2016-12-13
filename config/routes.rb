@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :posts ,:posttypes ,:accounts, :notices, :classrooms,:userclassroomships
+  resources :posts ,:posttypes ,:accounts, :notices, :classrooms,:userclassroomships,:homeworks, :homeworkposts
   get 'userclassroomship/apply/:id', :to => 'userclassroomships#apply'
   get 'userclassroomship/approved', :to => 'userclassroomships#approved'
   get 'userclassroomship/mngindex', :to => 'userclassroomships#mngindex'
