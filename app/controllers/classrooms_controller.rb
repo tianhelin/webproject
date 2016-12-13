@@ -13,6 +13,7 @@ class ClassroomsController < ApplicationController
   
   def create
     @classroom = current_user.classrooms.create(classroom_params)
+    @classroom.create_posttype(:typename => @classroom.name)
     redirect_to userclassroomship_approved_path(:userclassroomship => {:user_id => current_user.id,:classroom_id => Classroom.last.id,:init => "new"})
   end
   
@@ -28,6 +29,7 @@ class ClassroomsController < ApplicationController
   end
   
   def destroy
+    @classroom.posttype.destroy
     @classroom.destroy
     redirect_to classrooms_path
   end
