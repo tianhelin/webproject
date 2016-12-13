@@ -2,10 +2,21 @@
   <%= @homework.title %>
 </h1>
 <%= simple_format(@homework.describe) %>
-
-<p>
 <% if current_user.adminkey_id == 1 %>
   <%= link_to '編輯', edit_homework_path(@homework), :class => "btn btn-default" %>
 <% end %>
+
+<% if current_user.adminkey_id == 1 %>
+  <h3>學員繳交</h3>
+  <% @homework.homeworkposts.each do |post| %>
+    <div class="post name"><%= User.find(post.user_id).name %></div>
+    <div class="post content"><%= post.content %></div>
+  <% end %>
+<% else %>
+  <h3>我的繳交結果：</h3>
+  <% @homework.homeworkposts.where('user_id=?',current_user.id).first.content %>
+<% end %>
+
+<p>
 <%= link_to '回首頁' , posts_path, :class => 'btn btn-default' %>
 </p>
