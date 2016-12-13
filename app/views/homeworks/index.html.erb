@@ -1,0 +1,13 @@
+<h1>我的作業</h1>
+
+<% current_user.classrooms.each do |classroom| %>
+  <h3><%= classroom.name %></h3>
+  <table class="table">
+    <% classroom.homeworks.each do |homework| %>
+    <tr>
+      <td><%= link_to homework.title,homework_path(homework) %></td>
+      <td><%= homework.created_at %></td>
+    </tr>
+    <% end %>
+  </table>
+<% end %>
