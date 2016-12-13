@@ -1,0 +1,7 @@
+<h1>新增作業</h1>
+<%= form_for @homework do |f| %>
+<%= render :partial => 'form', :locals => {:f => f} %>
+<%= f.submit "發表" ,:class => 'btn btn-default'%>
+<% end %>
+
+<p><%= link_to '回首頁' , posts_path, :class => 'btn btn-default' %></p>

@@ -1,0 +1,8 @@
+<%= f.label :topic ,'標題' %>
+<%= f.text_field :title %>
+<br>
+<%= f.label :classroom_id,'課程' %>
+<%= f.collection_select(:classroom_id,Classroom.all,:id,:name) %>
+<br>
+<%= f.label :describe,'內文' %>
+<%= f.cktext_area :describe, cols: 40 %>
