@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
   belongs_to :adminkey , foreign_key: :adminkey_id
   has_many :posts
   has_many :notices
-  has_many :userclassroomships
   has_many :homeworkposts
+  has_many :userclassroomships
+  has_many :userhomeworkships
   has_many :classrooms, :through => :userclassroomships
+  has_many :homeworks, :through => :userhomeworkships
 end
