@@ -7,7 +7,7 @@
           <a href="<%= classrooms_path %>">
             Hi,
             <%= current_user.name %>
-            !
+            ！
           </a>
         </li>
         <% if Notice.where("recipient_id = ? AND readed = ?", current_user.id , 0 ).exists? == true %>

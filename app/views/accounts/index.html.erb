@@ -1,35 +1,25 @@
 <h1>帳號管理</h1>
-<table class="table">
-    <td>使用者名稱</td>
-    <td>電子信箱</td>
-    <td>生日</td>
-    <td>管理權限</td>
-  <tr>
+<p>
+  <div class="col-sm-3 text-center">使用者名稱</div>
+  <div class="col-sm-3 text-center">生日</div>
+  <div class="col-sm-3 text-center">電子信箱</div>
+  <div class="col-sm-3 text-center">權限管理</div>
+</p>
+<%= form_tag accounts_path do %>
   <% @accounts.each do |account| %>
-    <td>
-      <%= account.name %>
-    </td>
-    <td>
-      <%= account.email %>
-    </td>
-    <td>
-      <%= account.birthday %>
-    </td>
-    <td>
-      <% @account = User.new %>
-      <%= form_for @account, url: account_path(account), html: {method: "put"} do |f| %>
-        <%= f.select(:adminkey, options_for_select([
-          ['學生', 0],
-          ['管理者', 1],
-          ['老師', 2],
-          ['家長', 3]
-        ], account.adminkey)) %>
-        <%= f.submit "更新權限", class: "btn btn-default" %>
-      <% end %>
-    </td>
-  </tr>
+    <p>
+      <div class="col-sm-3 text-center"><%= account.name %></div>
+      <div class="col-sm-3 text-center"><%= account.birthday %></div>
+      <div class="col-sm-3 text-center"><%= account.email %></div>
+      <div class="col-sm-3 text-center">
+        <%= account.adminkey.rolename %>
+        <%= collection_select(:adminset,account.id, Adminkey.all, :id, :rolename,{:prompt => '尚未選擇(不更改)'}) %>
+      </div>
+    </p>
   <% end %>
-</table>
+  <%= submit_tag '更新權限', :class => 'btn btn-default' %>
+<% end %>
+
 
 <%= link_to '回首頁', posts_path ,  :class => "btn btn-default" %>
 

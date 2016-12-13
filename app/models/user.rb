@@ -4,12 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :name,  presence: true
+  belongs_to :adminkey , foreign_key: :adminkey_id
   has_many :posts
   has_many :notices
   has_many :userclassroomships
   has_many :classrooms, :through => :userclassroomships
-  
-  def adminornot?(user)
-    user && user.adminkey == 1
-  end
+
 end

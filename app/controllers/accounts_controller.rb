@@ -3,19 +3,24 @@ before_action :authenticate_user!, :checkadmin
 
 def index
   @accounts = User.all
-  @accounts = @accounts.order('id DESC')
+  @accounts = @accounts.order('id ASC')
 end
 
-
-def update
-  @account = User.find(params[:id])
-  @account.adminkey = params[:adminkey]
-  @account.update(account_params)
+def create
+  @adminset = params[:adminset]
+  @adminset.each do |user_id,adminkey|
+    if adminkey != ""
+      @user = User.find(user_id)
+      @user.adminkey_id = adminkey
+      @user.save(account_params)
+    end
+  end
   redirect_to accounts_path
 end
 
 private
   def account_params
-    params.require(:user).permit(:adminkey)
+    params.permit(:adminset)
   end
 end
+

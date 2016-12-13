@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126064924) do
+ActiveRecord::Schema.define(version: 20161212083954) do
+
+  create_table "adminkeys", force: :cascade do |t|
+    t.string   "rolename"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "classrooms", force: :cascade do |t|
     t.string   "name"
@@ -81,7 +87,7 @@ ActiveRecord::Schema.define(version: 20161126064924) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "adminkey",               default: 0
+    t.integer  "adminkey_id",            default: 2
     t.string   "name"
     t.date     "birthday"
   end
