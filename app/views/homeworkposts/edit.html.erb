@@ -1,0 +1,13 @@
+<%= form_for @homeworkpost do |f| %>
+  <h2>
+    <%= Homework.find(@homeworkpost.homework_id).title %>
+  </h2>
+  <p>
+    <%= simple_format(Homework.find(@homeworkpost.homework_id).describe) %>
+  </p>
+  <%= f.label :content,'繳交內容' %>
+  <%= f.cktext_area :content, cols: 40 %>
+  <%= f.submit "繳交" ,:class => 'btn btn-default'%>
+<% end %>
+
+<p><%= link_to '回首頁' , posts_path,:class => 'btn btn-default' %></p>

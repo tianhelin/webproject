@@ -14,9 +14,10 @@
   <% end %>
 <% else %>
   <h3>我的繳交結果：</h3>
-  <% @homework.homeworkposts.where('user_id=?',current_user.id).first.content %>
+  <div><%= simple_format(@homework.homeworkposts.where('user_id=?',current_user.id).first.content) %></div>
+  <%= link_to '編輯',edit_homeworkpost_path(@homework.homeworkposts.where('user_id=?',current_user.id).first.id), :class => "btn btn-default" %>
 <% end %>
 
 <p>
-<%= link_to '回首頁' , posts_path, :class => 'btn btn-default' %>
+  <%= link_to '回首頁' , posts_path, :class => 'btn btn-default' %>
 </p>
