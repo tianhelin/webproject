@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213072807) do
+ActiveRecord::Schema.define(version: 20161214100813) do
 
   create_table "adminkeys", force: :cascade do |t|
     t.string   "rolename"
@@ -43,15 +43,6 @@ ActiveRecord::Schema.define(version: 20161213072807) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "news", force: :cascade do |t|
-    t.string   "topic"
-    t.string   "content"
-    t.string   "newclass"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "notices", force: :cascade do |t|
     t.string   "topic"
     t.string   "content"
@@ -60,12 +51,6 @@ ActiveRecord::Schema.define(version: 20161213072807) do
     t.boolean  "readed",       default: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
-  end
-
-  create_table "postclasses", force: :cascade do |t|
-    t.string   "class"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|

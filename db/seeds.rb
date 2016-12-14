@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Adminkey.create!(:rolename =>'管理者')
+Adminkey.create!(:rolename =>'學生')
+Adminkey.create!(:rolename =>'老師')
+User.create!(:email => "jellybox@gmail.com",:name => "Jimmy Liu",:password => "default",:password_confirmation => "default",:adminkey_id => 1)
