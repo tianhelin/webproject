@@ -10,10 +10,10 @@
             ！
           </a>
         </li>
-        <% if Notice.where("recipient_id = ? AND readed = ?", current_user.id , 0 ).exists? == true %>
+        <% if Notice.where("recipient_id = ? AND readed = ?", current_user.id , false ).exists? == true %>
           <li>
             <a href="<%= notices_path %> ">
-              <%= '您有' + Notice.where("recipient_id = ? AND readed = ?", current_user.id , 0 ).count.to_s + '個未讀通知' %>
+              <%= '您有' + Notice.where("recipient_id = ? AND readed = ?", current_user.id , false ).count.to_s + '個未讀通知' %>
             </a>
           </li>
         <% else %>
