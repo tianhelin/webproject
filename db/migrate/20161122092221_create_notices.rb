@@ -5,7 +5,7 @@ class CreateNotices < ActiveRecord::Migration
       t.string :content
       t.integer :user_id
       t.integer :recipient_id
-      t.boolean :readed , default:0
+      t.boolean :readed , default:false
       t.timestamps null: false
     end
   end
