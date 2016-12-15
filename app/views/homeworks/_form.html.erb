@@ -5,4 +5,6 @@
 <%= f.collection_select(:classroom_id,Classroom.all,:id,:name) %>
 <br>
 <%= f.label :describe,'內文' %>
+<div data-no-turbolink>
 <%= f.cktext_area :describe, cols: 40 %>
+</div>

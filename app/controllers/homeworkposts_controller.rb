@@ -16,14 +16,15 @@ before_action :checkadmin,:only => [:returnhomework,:sendnotice]
   end
   
   def sendnotice
+    @homeworkpost = Homeworkpost.find(params[:homeworkpost][:id])
     @notice = current_user.notices.new(notice_params)
-    @notice.topic = "所繳交作業：#{Homework.find(params[:homework][:homework_id]).title}被退件，請再修改後交出。"
-    @notice.content << "<p><a href='#{homework_path(params[:homework][:homework_id])}'>作業連結</a></p>"
+    @notice.topic = "所繳交作業：#{Homework.find(@homeworkpost.homework_id).title}被退件，請再修改後交出。"
+    @notice.content << "<p><a href='#{homework_path(@homeworkpost.homework_id)}'>作業連結</a></p>"
+    @notice.recipient_id = @homeworkpost.user_id
     @notice.save
-    @homeworkpost = Homeworkpost.find(params[:homework][:homeworkpost_id])
     @homeworkpost.handin = false
     @homeworkpost.save
-    redirect_to homework_path(params[:homework][:homework_id])
+    redirect_to homework_path(@homeworkpost.homework_id)
   end
 
 private

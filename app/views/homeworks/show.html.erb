@@ -1,7 +1,7 @@
 <h1>
   <%= @homework.title %>
 </h1>
-<%= simple_format(@homework.describe) %>
+<%= raw (@homework.describe) %>
 <% if current_user.adminkey_id == 1 %>
   <%= link_to '編輯', edit_homework_path(@homework), :class => "btn btn-default" %>
 <% end %>
@@ -15,12 +15,12 @@
         (<% if post.handin == true%>已繳<% else %>未繳<% end %>)
         <%= link_to '退件',returnhomework_homeworkpost_path(post.id), :class => "btn btn-default" %>
       </div>
-      <div class="post content"><%= simple_format(post.content) %></div>
+      <div class="post content"><%= raw (post.content) %></div>
     </div>
   <% end %>
 <% else %>
   <h3>我的繳交結果：</h3>
-  <div><%= simple_format(@homework.homeworkposts.where('user_id=?',current_user.id).first.content) %></div>
+  <div><%= raw (@homework.homeworkposts.where('user_id=?',current_user.id).first.content) %></div>
   <%= link_to '編輯',edit_homeworkpost_path(@homework.homeworkposts.where('user_id=?',current_user.id).first.id), :class => "btn btn-default" %>
 <% end %>
 

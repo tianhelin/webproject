@@ -12,7 +12,9 @@
   <%= f.text_field :topic %>
   <br>
   <%= f.label :content,'內文' %>
+  <div data-no-turbolink>
   <%= f.cktext_area :content, cols: 40 %>
+  </div>
   <% if params[:to] != 'all' %>
     <h1>收件者：</h1></br>
     <% User.all.each do |u| %>

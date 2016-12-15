@@ -5,4 +5,6 @@
 <%= f.collection_select(:posttype_id, Posttype.all, :id, :typename) %>
 <br>
 <%= f.label :content,'內文' %>
+<div data-no-turbolink>
 <%= f.cktext_area :content, cols: 40 %>
+</div>

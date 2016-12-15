@@ -3,10 +3,12 @@
     <%= Homework.find(@homeworkpost.homework_id).title %>
   </h2>
   <p>
-    <%= simple_format(Homework.find(@homeworkpost.homework_id).describe) %>
+    <%= raw (Homework.find(@homeworkpost.homework_id).describe) %>
   </p>
   <%= f.label :content,'繳交內容' %>
+  <div data-no-turbolink>
   <%= f.cktext_area :content, cols: 40 %>
+  </div>
   <%= f.submit "繳交" ,:class => 'btn btn-default'%>
 <% end %>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214100813) do
+ActiveRecord::Schema.define(version: 20161215160648) do
 
   create_table "adminkeys", force: :cascade do |t|
     t.string   "rolename"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20161214100813) do
     t.date     "applydeadline"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "introduction"
   end
 
   create_table "homeworkposts", force: :cascade do |t|
