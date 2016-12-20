@@ -29,6 +29,9 @@ gem 'bootstrap-sass'
 
 gem 'ckeditor'
 
+gem 'rqrcode-with-patches', '~> 0.5.4'
+# gem for generate QRcode
+
 gem 'pg'
 gem 'rails_12factor', group: :production
 

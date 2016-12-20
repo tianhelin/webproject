@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'qr_codes/new'
+
+  get 'qr_codes/create'
+
   devise_for :users
   resources :posts ,:posttypes ,:accounts, :notices, :classrooms,:userclassroomships,:homeworks, :homeworkposts
   get 'userclassroomship/apply/:id', :to => 'userclassroomships#apply'
@@ -6,6 +10,8 @@ Rails.application.routes.draw do
   post 'homeworkpost/sendnotice', :to => 'homeworkposts#sendnotice', :as => 'sendnotice_homeworkpost'
   get 'userclassroomship/approved', :to => 'userclassroomships#approved'
   get 'userclassroomship/mngindex', :to => 'userclassroomships#mngindex'
+  
+  resources :qr_codes, only: [:new, :create]
   
   root :to => 'posts#index'
   
