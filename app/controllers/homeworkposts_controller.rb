@@ -21,6 +21,7 @@ before_action :checkadmin,:only => [:returnhomework,:sendnotice]
     @notice.topic = "所繳交作業：#{Homework.find(@homeworkpost.homework_id).title}被退件，請再修改後交出。"
     @notice.content << "<p><a href='#{homework_path(@homeworkpost.homework_id)}'>作業連結</a></p>"
     @notice.recipient_id = @homeworkpost.user_id
+    @notice.homeworkpost_id = @homeworkpost.id
     @notice.save
     @homeworkpost.handin = false
     @homeworkpost.save

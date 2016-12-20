@@ -16,8 +16,7 @@
   <% @homeworkpost.notices.each do |notice| %>
     <tr>
       <td>時間：<%= notice.created_at %></td></tr>
-      <tr><td>退件內容：<%= notice.content %></td></tr>
-    
+      <tr><td>退件內容：<%= raw notice.content %></td></tr>
   <% end %>
 </table>
 
