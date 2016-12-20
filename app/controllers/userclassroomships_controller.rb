@@ -20,6 +20,7 @@ class UserclassroomshipsController < ApplicationController
           @userclassroomship.update(userclassroomship_params)
           Classroom.find(params[:userclassroomship][:classroom_id].first).homeworks.each do |homework|
             Userhomeworkship.create(:user_id => user_id,:homework_id => homework.id)
+            Homeworkpost.create(:user_id => user_id,:homework_id => homework.id)
           end
         else
           redirect_to userclassroomship_mngindex_path
