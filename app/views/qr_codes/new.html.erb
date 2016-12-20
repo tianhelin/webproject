@@ -1,0 +1,6 @@
+<h1>QrCodes#new</h1>
+<%= form_for :qr_code, url: qr_codes_path do |f| %>
+  <%= f.label :text %>
+  <%= f.text_field :text %>
+  <%= f.submit %>
+<% end %>
