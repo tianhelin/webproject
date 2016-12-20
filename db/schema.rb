@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161220084458) do
+ActiveRecord::Schema.define(version: 20161220095343) do
 
   create_table "adminkeys", force: :cascade do |t|
     t.string   "rolename"
@@ -49,9 +49,10 @@ ActiveRecord::Schema.define(version: 20161220084458) do
     t.string   "content"
     t.integer  "user_id"
     t.integer  "recipient_id"
-    t.boolean  "readed",       default: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.boolean  "readed",          default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "homeworkpost_id", default: 0
   end
 
   create_table "posts", force: :cascade do |t|
