@@ -1,7 +1,16 @@
 <h1>新增課程</h1>
 <%= form_for @classroom do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>
+  <strong>發送通知訊息給：</strong>
+  <p>
+    <% User.all.each do |u| %>
+      <%= check_box_tag "recipient[]", u.id %>
+      <%= f.label :recipient_id, u.name %>
+    <% end %>
+    <%= hidden_field_tag 'recipient[]','' %>
+  </p>
   <%= f.submit '新增課程', :class => 'btn btn-default' %>
+  
 <% end %>
 
 <%= link_to '回課程總覽', classrooms_path, :class => 'btn btn-default' %>

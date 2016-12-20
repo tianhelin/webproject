@@ -37,6 +37,12 @@ class NoticesController < ApplicationController
     @notice.save
   end
   
+  def transfer_edit
+  end
+  
+  def trans_create
+  end
+  
 private
   def set_notice
     @notice = Notice.find(params[:id])

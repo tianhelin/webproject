@@ -15,26 +15,31 @@ class ClassroomsController < ApplicationController
     @classroom = current_user.classrooms.create(classroom_params)
     @classroom.create_posttype(:typename => @classroom.name)
     @apply_path = RQRCode::QRCode.new(userclassroomship_apply_path(Classroom.last.id), size: 4) 
-    @notice = current_user.notices.new
-    @notice.topic = "新增課程#{@classroom.name}!"
-    @notice.content = "<p>已經新增課程#{@classroom.name}了！，申請期限為'#{@classroom.applydeadline}'</p>
-                       <p><a href='#{userclassroomship_apply_path(Classroom.last.id)}'>點選我加入課程</a></p>
-                       <p>或是透過掃描以下QR code連結至加入頁面：</p>
-                       <table class='qr-code'>"
-                      @apply_path.modules.each_index do |x|
-                        @notice.content << "<tr>"
-                        @apply_path.modules.each_index do |y|
-                          if @apply_path.dark?(x,y)
-                            @notice.content << '<td class="black"/>'
-                          else
-                            @notice.content << '<td class="white"/>'
+    if params[:recipient].first != ""
+      @recipient = params[:recipient]
+      @recipient.each do |uid|
+        @notice = current_user.notices.new
+        @notice.topic = "新增課程#{@classroom.name}!"
+        @notice.content = "<p>已經新增課程#{@classroom.name}了！，申請期限為'#{@classroom.applydeadline}'</p>
+                           <p><a href='#{userclassroomship_apply_path(Classroom.last.id)}'>點選我加入課程</a></p>
+                           <p>或是透過掃描以下QR code連結至加入頁面：</p>
+                           <table class='qr-code'>"
+                          @apply_path.modules.each_index do |x|
+                            @notice.content << "<tr>"
+                            @apply_path.modules.each_index do |y|
+                              if @apply_path.dark?(x,y)
+                                @notice.content << '<td class="black"/>'
+                              else
+                                @notice.content << '<td class="white"/>'
+                              end
+                            end
+                            @notice.content << "</tr>"
                           end
-                        end
-                        @notice.content << "</tr>"
-                      end
-    @notice.content<< "</table>"
-    @notice.recipient_id = User.first.id
-    @notice.save
+        @notice.content<< "</table>"
+        @notice.recipient_id = uid
+        @notice.save
+      end
+    end
     redirect_to userclassroomship_approved_path(:userclassroomship => {:user_id => current_user.id,:classroom_id => Classroom.last.id,:init => "new"})
   end
   
