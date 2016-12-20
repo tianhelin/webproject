@@ -17,7 +17,7 @@ class ClassroomsController < ApplicationController
     @apply_path = RQRCode::QRCode.new(userclassroomship_apply_path(Classroom.last.id), size: 4) 
     @notice = current_user.notices.new
     @notice.topic = "新增課程#{@classroom.name}!"
-    @notice.content = "<p>已經新增課程#{@classroom.name}了！</p>
+    @notice.content = "<p>已經新增課程#{@classroom.name}了！，申請期限為'#{@classroom.applydeadline}'</p>
                        <p><a href='#{userclassroomship_apply_path(Classroom.last.id)}'>點選我加入課程</a></p>
                        <p>或是透過掃描以下QR code連結至加入頁面：</p>
                        <table class='qr-code'>"
@@ -61,6 +61,6 @@ private
   end
   
   def classroom_params
-    params.require(:classroom).permit(:name,:applydeadline, :user_id)
+    params.require(:classroom).permit(:name,:applydeadline, :user_id,:introduction)
   end
 end
