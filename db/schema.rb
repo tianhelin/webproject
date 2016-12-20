@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215160648) do
+ActiveRecord::Schema.define(version: 20161220084458) do
 
   create_table "adminkeys", force: :cascade do |t|
     t.string   "rolename"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20161215160648) do
     t.integer  "adminkey_id",            default: 2
     t.string   "name"
     t.date     "birthday"
+    t.string   "accountname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -1,20 +1,25 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>修改資訊 <%= current_user.name %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.label :accountname, '帳號' %><br />
+    <%= f.text_field :accountname, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email,'電子信箱' %><br />
+    <%= f.email_field :email %>
   </div>
   
-   <div class="field">
-    <%= f.label :name %><br />
+  <div class="field">
+    <%= f.label :name,'暱稱' %><br />
     <%= f.text_field :name %>
   </div>
   
   <div class="field">
-    <%= f.label :birthday %><br />
+    <%= f.label :birthday,'生日' %><br />
     <%= f.date_select :birthday %>
   </div>
 
@@ -23,31 +28,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password,"新密碼" %> <i>(若不更改密碼則保持空白)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em>最少需要<%= @minimum_password_length %>個字元 </em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation,"重新輸入一次密碼" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password,"當前密碼" %> <i>(輸入當前密碼以驗證改動)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "更新" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<%= link_to "回上頁", :back %>
