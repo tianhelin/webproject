@@ -11,5 +11,14 @@
   </div>
   <%= f.submit "繳交" ,:class => 'btn btn-default'%>
 <% end %>
+<h3>退件歷史</h3>
+<table class="table">
+  <% @homeworkpost.notices.each do |notice| %>
+    <tr>
+      <td>時間：<%= notice.created_at %></td></tr>
+      <tr><td>退件內容：<%= notice.content %></td></tr>
+    
+  <% end %>
+</table>
 
 <p><%= link_to '回首頁' , posts_path,:class => 'btn btn-default' %></p>
