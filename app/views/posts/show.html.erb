@@ -5,7 +5,6 @@
   <%= @post.topic %>
 </h1>
 <%= raw (@post.content) %>
-<%= @post.content %>
 <p>
 <% if current_user.adminkey_id == 1 %>
   <%= link_to '編輯', edit_post_path(@post), :class => "btn btn-default" %>
