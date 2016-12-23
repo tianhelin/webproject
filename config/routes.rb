@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :posts ,:posttypes ,:accounts, :notices, :classrooms,:userclassroomships,:homeworks, :homeworkposts
+  post 'classroom/delete/:id', :to => 'classrooms#delete', :as => 'delete_classroom'
   get 'userclassroomship/apply/:id', :to => 'userclassroomships#apply',:as =>'userclassroomship_apply'
   get 'homeworkpost/returnhomework/:id', :to => 'homeworkposts#returnhomework', :as => 'returnhomework_homeworkpost'
   post 'homeworkpost/sendnotice', :to => 'homeworkposts#sendnotice', :as => 'sendnotice_homeworkpost'

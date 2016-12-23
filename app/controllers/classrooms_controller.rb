@@ -54,10 +54,22 @@ class ClassroomsController < ApplicationController
     redirect_to classrooms_path
   end
   
-  def destroy
+  def delete
+    if params[:post_id] != nil
+      @posts = params[:post_id]
+      @posts.each do |post|
+        @post = Post.find(post)
+        @post.posttype_id = 2
+        @post.save
+      end
+    end
+    @classroom = Classroom.find(params[:id])
     @classroom.posttype.destroy
     @classroom.destroy
     redirect_to classrooms_path
+  end
+
+  def destroy
   end
   
 private

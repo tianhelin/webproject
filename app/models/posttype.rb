@@ -1,5 +1,5 @@
 class Posttype < ActiveRecord::Base
   validates :typename,  presence: true
   belongs_to :classroom
-  has_many :posts
+  has_many :posts,:dependent => :destroy
 end

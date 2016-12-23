@@ -1,0 +1,13 @@
+<h1>刪除課程"<%= @classroom.name %>"</h1>
+<p>刪除課程將同時刪除以下文章，請確認希望留下封存的文章：</p>
+<div class="col-sm-6 text-center">文章標題</div>
+<div class="col-sm-6 text-center">勾選以保留</div>
+<%= form_tag delete_classroom_path(@classroom.id) %>
+  <% @classroom.posttype.posts.each do |post| %>
+    <p>
+      <div class="col-sm-6 text-center"><%= link_to post.topic,post_path(post.id), :target => "_blank" %></div>
+      <div class="col-sm-6 text-center"><%= check_box_tag 'post_id[]', value = post.id %></div>
+    </p>
+  <% end %>
+<div class="col-sm-3 text-center"><%= submit_tag '送出', :data => { :confirm => "確定刪除並封存文章?" }, :class => "btn btn-default" %></div>
+  

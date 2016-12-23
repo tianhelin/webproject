@@ -20,7 +20,7 @@
       <% if current_user && current_user.adminkey_id == 1 %>
       <td>
         <%= link_to '編輯',edit_classroom_path(classroom), :class => 'btn btn-default' %>
-        <%= link_to '刪除',classroom_path(classroom),:method => :delete, :data => { :confirm => "確定刪除?" }, :class => "btn btn-default" %>
+        <%= link_to '刪除',classroom_path(classroom),:method => :delete, :class => "btn btn-default" %>
       </td>
       <% end %>
     </tr>
