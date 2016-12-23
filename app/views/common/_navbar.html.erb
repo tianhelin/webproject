@@ -3,36 +3,39 @@
     <div class="navbar-headerpull-right">
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-        <li>
-          <a href="<%= classrooms_path %>">
-            Hi,
-            <%= current_user.name %>
-            ！
-          </a>
-        </li>
-        <% if Notice.where("recipient_id = ? AND readed = ?", current_user.id , false ).exists? == true %>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="<%= classrooms_path %>">
+                Hi,
+                <%= current_user.name %>
+                ！
+              </a>
+            </li>
+          <% if Notice.where("recipient_id = ? AND readed = ?", current_user.id , false ).exists? == true %>
           <li>
             <a href="<%= notices_path %> ">
               <%= '您有' + Notice.where("recipient_id = ? AND readed = ?", current_user.id , false ).count.to_s + '個未讀通知' %>
             </a>
           </li>
-        <% else %>
+          <% else %>
           <li>
             <a href="<%= notices_path %>">
               您沒有未讀通知
             </a>
           </li>
-        <% end %>
-        <li>
-          <%= link_to'我的作業', homeworks_path %>
-        </li>
-        <li>
-          <%= link_to('登出', destroy_user_session_path, :method => :delete) %>
-        </li>
-        <li>
-          <%= link_to('帳號設定', edit_registration_path(:user)) %>
-        </li>
-          <% else %>
+          <% end %>
+          <li>
+            <%= link_to'我的作業', homeworks_path %>
+          </li>
+          <li>
+            <%= link_to('登出', destroy_user_session_path, :method => :delete) %>
+          </li>
+          <li>
+            <%= link_to('帳號設定', edit_registration_path(:user)) %>
+          </li>
+        </ul>
+        <% else %>
         <li>
           <%= link_to('註冊', new_registration_path(:user)) %>
         </li>
