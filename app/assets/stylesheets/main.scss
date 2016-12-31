@@ -13,6 +13,10 @@ ul.dropdown-menu span{
   margin-left: 0.5em ;
 }
 
+.welcome-note{
+  margin-bottom: 2em;
+}
+
 .footer{
   margin-top: 2em;
 }
@@ -27,10 +31,28 @@ ul.dropdown-menu span{
 
 .postwrapper{
   color: black;
-  line-height: 300%;
+  line-height: 200%;
 }
 .postwrapper:hover{
   background-color: #EEE;
+}
+
+h2{
+  height: 1.5em;
+  border-bottom: 1px solid #EEE;
+}
+
+.posttype-list{
+  position: relative;
+}
+
+.form-div{
+  position: relative;
+}
+
+.input-group{
+  margin: 0 auto;
+  margin-top: 2em;
 }
 
 @media (max-width: 450px){

@@ -1,19 +1,17 @@
 <div class="post-body">
+  <h2 class="text-center welcome-title">歡迎回來！近期新聞如下：</h2>
+  <p class="text-center welcome-note">(或利用右上角功能鍵進入各個頁面)</p>
   <div class="clearfix">
-    <div class="col-xs-4 text-center">分類</div>
-    <div class="col-xs-4 text-center">文章標題</div>
-    <div class="col-xs-4 text-center">更新時間</div>
+    <div class="col-xs-6 text-center">新聞標題</div>
+    <div class="col-xs-6 text-center">更新時間</div>
   </div>
   <% @posts.each do |p| %>
     <%= link_to post_path(p),class:"clearfix" do %>
       <div class="postwrapper clearfix">
-        <div class="col-xs-4 text-center">
-              <%=  Posttype.find(p.posttype_id).typename  %>
-        </div>
-        <div class="col-xs-4 text-center">
+        <div class="col-xs-6 text-center news-topic">
               <%= p.topic %>
         </div>
-        <div class="col-xs-4 text-center">
+        <div class="col-xs-6 text-center">
               <%= p.updated_at.to_s(:short) %>
         </div>
     </div>

@@ -1,23 +1,26 @@
-<h1>分類管理</h1>
-<table>
-  <tr>
+<h2>分類管理</h2>
+<div class="posttype-list clearfix">
   <% @posttypes.each do |posttype| %>
-    <td>
+    <div class="col-xs-4">
       <%= posttype.typename %>
-    </td>
-    <td>
-      <% if posttype.classroom_id == 0 %>
-        <%= link_to '刪除分類', posttype_path(posttype), :method => :delete, :data => { :confirm => "確定刪除? 將會連同此分類之文章一起刪除" }, :class => "btn btn-default" %>
+    </div>
+    <div class="col-xs-8">
+      <% if posttype.classroom_id == 0 && posttype.id > 2 %>
+        <%= link_to '刪除分類', posttype_path(posttype), :method => :delete, :data => { :confirm => "確定刪除? 將會連同此分類之文章一起刪除" }, :class => "btn btn-primary" %>
+      <% else %>
+        <p>不能被刪除的分類</p>
       <% end %>
-    </td>
-  </tr>
+    </div>
   <% end %>
-</table>
+</div>
 
-<%= form_for @posttype do |f| %>
-  <%= f.label :typename ,'新增分類名稱' %>
-  <%= f.text_field :typename %>
-  <%= f.submit "新增",:class => 'btn btn-default' %>
+<div class="form-div">
+  <%= form_for @posttype do |f| %>
+  <div class="input-group col-xs-6">
+    <%= f.text_field :typename,:class => 'form-control' %>
+    <span class="input-group-btn">
+      <%= f.submit "新增分類",:class => 'btn btn-primary' %>
+    </span>
+  </div>
+</div>
 <% end %>
-
-<%= link_to '回首頁', posts_path , :class => "btn btn-default" %>
