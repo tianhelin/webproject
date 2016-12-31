@@ -1,51 +1,42 @@
-<h1>文章首頁</h1>
-<table class="table">
-  <tr>
-    <tr>
-      <td>分類</td>
-      <td>文章標題</td>
-      <td>更新時間</td>
-      <% if adminornot?(current_user) %>
-        <td>管理者功能</td>
-      <% end %>
-    </tr>
+<div class="post-body">
+  <div class="clearfix">
+    <div class="col-xs-4 text-center">分類</div>
+    <div class="col-xs-4 text-center">文章標題</div>
+    <div class="col-xs-4 text-center">更新時間</div>
+  </div>
   <% @posts.each do |p| %>
-    <td>
-      <%= '[' %>
-      <%=  Posttype.find(p.posttype_id).typename  %>
-      <%= ']' %>
-    </td>
-    <td>
-      <%= link_to p.topic,post_path(p) %>
-    </td>
-    <td>
-      <%= p.updated_at %>
-    </td>
-    <td>
-      <% if current_user && current_user.adminkey_id == 1 %>
-        <%= link_to '編輯', edit_post_path(p), :class => "btn btn-default" %>
-        <%= link_to '刪除', post_path(p),:method => :delete, :data => { :confirm => "確定刪除?" }, :class => "btn btn-default" %>
-      <% end %>
-    </td>
-  </tr>
+    <%= link_to post_path(p),class:"clearfix" do %>
+      <div class="postwrapper clearfix">
+        <div class="col-xs-4 text-center">
+              <%=  Posttype.find(p.posttype_id).typename  %>
+        </div>
+        <div class="col-xs-4 text-center">
+              <%= p.topic %>
+        </div>
+        <div class="col-xs-4 text-center">
+              <%= p.updated_at.to_s(:short) %>
+        </div>
+    </div>
+    <% end %>
   <% end %>
-</table>
-
-
-<%= paginate @posts %>
-<br>
-
-<%= link_to '分類排序', posts_path(:sort => "class"), :class => "btn btn-default" %>
-<%= link_to '新舊排序', posts_path ,  :class => "btn btn-default" %>
-
-<% if current_user && current_user.adminkey_id == 1 %>
-<%= link_to '新增文章', new_post_path, :class => "btn btn-default"  %>
-<p>
-  <%= link_to '分類管理' , posttypes_path, :class => "btn btn-default" %>
-  <%= link_to '帳戶管理' , accounts_path, :class => "btn btn-default" %>
-  <%= link_to '發全站通知' , new_notice_path(:to => "all") ,:class => "btn btn-default" %>
-  <%= link_to '發個別通知' , new_notice_path ,:class => "btn btn-default" %>
-</p>
-<% end %>
-
+  <div class="text-center">
+    <%= paginate @posts %>
+  </div>
+  
+  
+  <br>
+  
+  <%= link_to '分類排序', posts_path(:sort => "class"), :class => "btn btn-default" %>
+  <%= link_to '新舊排序', posts_path ,  :class => "btn btn-default" %>
+  
+  <% if current_user && current_user.adminkey_id == 1 %>
+  <%= link_to '新增文章', new_post_path, :class => "btn btn-default"  %>
+  <p>
+    <%= link_to '分類管理' , posttypes_path, :class => "btn btn-default" %>
+    <%= link_to '帳戶管理' , accounts_path, :class => "btn btn-default" %>
+    <%= link_to '發全站通知' , new_notice_path(:to => "all") ,:class => "btn btn-default" %>
+    <%= link_to '發個別通知' , new_notice_path ,:class => "btn btn-default" %>
+  </p>
+  <% end %>
+</div>
 

@@ -1,12 +1,10 @@
 <h1>
-  <%= '[' %>
-  <%=  Posttype.find(@post.posttype_id).typename  %>
-  <%= ']' %>
+  <%= Posttype.find(@post.posttype_id).typename  %>
   <%= @post.topic %>
 </h1>
 <%= raw (@post.content) %>
 <p>
-<% if current_user.adminkey_id == 1 %>
+<% if current_user && current_user.adminkey_id == 1 %>
   <%= link_to '編輯', edit_post_path(@post), :class => "btn btn-default" %>
 <% end %>
 <%= link_to '回首頁' , posts_path, :class => 'btn btn-default' %>
