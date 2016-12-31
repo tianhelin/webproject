@@ -4,14 +4,9 @@ class PostsController < ApplicationController
  
  
   def index
-    @posts = Post.all
-    if params[:sort] == "class"
-      @posts = @posts.order( 'posttype_id ASC' )
-      @posts = @posts.page(params[:page]).per(5)
-    else
-      @posts = @posts.order( 'updated_at DESC' )
-      @posts = @posts.page(params[:page]).per(5)
-    end
+    @posts = Post.where("posttype_id=?",1)
+    @posts = @posts.order( 'updated_at DESC' )
+    @posts = @posts.page(params[:page]).per(7)
   end
   
   def new

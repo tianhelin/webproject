@@ -13,16 +13,8 @@ ul.dropdown-menu span{
   margin-left: 0.5em ;
 }
 
-.body-wrapper{
-  min-height: 90%;
-  position: relative;
-}
-
 .footer{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: #4286f4;
+  margin-top: 2em;
 }
 
 .footer p{
@@ -30,7 +22,7 @@ ul.dropdown-menu span{
 }
 
 .footer a{
-  color: white;
+  color: black;
 }
 
 .postwrapper{
@@ -42,20 +34,8 @@ ul.dropdown-menu span{
 }
 
 @media (max-width: 450px){
-  body{
-    height: 600px;
-  }
-
-  .footer{
-    height: 15%; 
-  }  
+    
 }
 @media (min-width: 451px){
-  body{
-    height: 750px;
-  } 
 
-  .footer{
-    height: 20%;
-  }
 }

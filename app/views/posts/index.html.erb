@@ -21,22 +21,10 @@
   <% end %>
   <div class="text-center">
     <%= paginate @posts %>
+    </br>
+    <% if current_user && current_user.adminkey_id == 1 %>
+      <%= link_to '新增文章', new_post_path, :class => "btn btn-primary"  %>
+    <% end %>
   </div>
-  
-  
-  <br>
-  
-  <%= link_to '分類排序', posts_path(:sort => "class"), :class => "btn btn-default" %>
-  <%= link_to '新舊排序', posts_path ,  :class => "btn btn-default" %>
-  
-  <% if current_user && current_user.adminkey_id == 1 %>
-  <%= link_to '新增文章', new_post_path, :class => "btn btn-default"  %>
-  <p>
-    <%= link_to '分類管理' , posttypes_path, :class => "btn btn-default" %>
-    <%= link_to '帳戶管理' , accounts_path, :class => "btn btn-default" %>
-    <%= link_to '發全站通知' , new_notice_path(:to => "all") ,:class => "btn btn-default" %>
-    <%= link_to '發個別通知' , new_notice_path ,:class => "btn btn-default" %>
-  </p>
-  <% end %>
 </div>
 
