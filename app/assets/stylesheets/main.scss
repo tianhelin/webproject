@@ -39,18 +39,28 @@ ul.dropdown-menu span{
 
 h2{
   height: 1.5em;
-  border-bottom: 1px solid #EEE;
 }
 
 .posttype-list{
+  width: 60%;
+  margin: 1em auto;
   position: relative;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.table p{
+  margin: 0 auto;
+  line-height: 2em;
 }
 
 .form-div{
   position: relative;
 }
 
-.input-group{
+.new_posttype .input-group{
   margin: 0 auto;
   margin-top: 2em;
 }
