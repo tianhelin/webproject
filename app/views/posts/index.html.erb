@@ -21,7 +21,7 @@
     <%= paginate @posts %>
     </br>
     <% if current_user && current_user.adminkey_id == 1 %>
-      <%= link_to '新增文章', new_post_path, :class => "btn btn-primary"  %>
+      <%= link_to '新增文章', new_post_path, :class => "btn btn-primary" %>
     <% end %>
   </div>
 </div>

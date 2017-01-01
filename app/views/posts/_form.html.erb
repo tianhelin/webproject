@@ -1,10 +1,12 @@
-<%= f.label :topic ,'標題' %>
-<%= f.text_field :topic %>
-<br>
-<%= f.label :posttype_id ,'分類' %>
-<%= f.collection_select(:posttype_id, Posttype.all, :id, :typename,{:selected => Posttype.first}) %>
-<br>
-<%= f.label :content,'內文' %>
-<div data-no-turbolink>
-<%= f.cktext_area :content, cols: 40 %>
+<div class="input-group">
+  <%= f.label :topic ,'標題',:class =>'input-group-addon' %>
+  <%= f.text_field :topic,:class => "form-control" %>
 </div>
+<br>
+<div class="input-group col-xs-3">
+  <%= f.label :posttype_id ,'分類',:class => 'input-group-addon' %>
+  <%= f.collection_select(:posttype_id, Posttype.all, :id, :typename,{:selected => Posttype.first},:class => 'selectpicker form-control') %>
+</div>
+<br>
+<%= f.text_area :content, cols: 40,:id => 'post_editor',:class =>"form-control" %>
+<script>CKEDITOR.replace( 'post_editor' );</script>
