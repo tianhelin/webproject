@@ -42,7 +42,6 @@ h2{
 }
 
 .posttype-list{
-  width: 60%;
   margin: 1em auto;
   position: relative;
 }
@@ -66,8 +65,12 @@ h2{
 }
 
 @media (max-width: 450px){
-    
+  .account-mng-table .account-email{
+    display: none;
+  }
 }
 @media (min-width: 451px){
-
+  .posttype-list{
+    width: 60%;
+  }
 }

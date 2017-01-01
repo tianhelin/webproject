@@ -1,4 +1,5 @@
-<h2 class="text-center">分類管理</h2>
+<h2 class="text-center welcome-title">分類管理</h2>
+<p class="text-center welcome-note">小提醒：內建與課程之分類無法刪除。</p>
 <table class="table table-bordered table-striped posttype-list">
   <% @posttypes.each do |posttype| %>
     <tr>
@@ -9,7 +10,7 @@
         <% if posttype.classroom_id == 0 && posttype.id > 2 %>
           <%= link_to '刪除分類', posttype_path(posttype), :method => :delete, :data => { :confirm => "確定刪除? 將會連同此分類之文章一起刪除" }, :class => "btn btn-primary" %>
         <% else %>
-          <p>不能被刪除的分類</p>
+          <p></p>
         <% end %>
       </td>
     </tr>

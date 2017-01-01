@@ -1,28 +1,24 @@
-<h1>帳號管理</h1>
-<p>
-  <div class="col-sm-3 text-center">使用者名稱</div>
-  <div class="col-sm-3 text-center">生日</div>
-  <div class="col-sm-3 text-center">電子信箱</div>
-  <div class="col-sm-3 text-center">權限管理</div>
-</p>
+<h2 class="text-center welcome-title">帳號管理</h2>
+<table class="table account-mng-table">
+<tr>
+  <td>名稱</td>
+  <td>生日</td>
+  <td class="account-email">電子信箱</td>
+  <td>權限</td>
+  <td>修改</td>
+</tr>
 <%= form_tag accounts_path do %>
   <% @accounts.each do |account| %>
-    <p>
-      <div class="col-sm-3 text-center"><%= account.name %></div>
-      <div class="col-sm-3 text-center"><%= account.birthday %></div>
-      <div class="col-sm-3 text-center"><%= account.email %></div>
-      <div class="col-sm-3 text-center">
-        <div class="col-xs-6 text-center">
-          <%= account.adminkey.rolename %>
-        </div>
-        <div class="col-xs-6 text-center">
-          <%= collection_select(:adminset,account.id, Adminkey.all, :id, :rolename,{:prompt => '尚未選擇(不更改)'}) %>
-        </div>
-      </div>
-    </p>
+    <tr>
+      <td><%= account.name %></td>
+      <td><%= account.birthday %></td>
+      <td class="account-email"><%= account.email %></td>
+      <td><%= account.adminkey.rolename %></td>
+      <td><%= collection_select(:adminset,account.id, Adminkey.all, :id, :rolename,{:prompt => '不更改'}) %></td>
+    </tr>
   <% end %>
-  <%= submit_tag '更新權限', :class => 'btn btn-default' %>
+</table>
+  <div class="text-center">
+    <%= submit_tag '更新權限', :class => 'btn btn-primary clearfix' %>
+  </div>
 <% end %>
-
-
-<%= link_to '回首頁', posts_path ,  :class => "btn btn-default" %>
