@@ -14,7 +14,7 @@
       <td><%= account.birthday %></td>
       <td class="account-email"><%= account.email %></td>
       <td><%= account.adminkey.rolename %></td>
-      <td><%= collection_select(:adminset,account.id, Adminkey.all, :id, :rolename,{:prompt => '不更改'}) %></td>
+      <td class="col-xs-3 account-selectbox"><%= collection_select(:adminset,account.id, Adminkey.all, :id, :rolename,{:prompt => '不更改'},:class => 'selectpicker') %></td>
     </tr>
   <% end %>
 </table>

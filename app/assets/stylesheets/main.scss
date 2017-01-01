@@ -37,7 +37,7 @@ ul.dropdown-menu span{
   background-color: #EEE;
 }
 
-h2{
+h2.welcome-title{
   height: 1.5em;
 }
 
@@ -67,6 +67,10 @@ h2{
 @media (max-width: 450px){
   .account-mng-table .account-email{
     display: none;
+  }
+
+  .account-selectbox .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+    width: 100%;
   }
 }
 @media (min-width: 451px){
