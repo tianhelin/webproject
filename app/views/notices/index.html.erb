@@ -20,7 +20,7 @@
       <%= link_to notice.topic,notice_path(notice) %>
     </td>
     <td>
-      <%= notice.created_at %>
+      <%= notice.created_at.to_s(:short) %>
     </td>
   </tr>
   <% end %>

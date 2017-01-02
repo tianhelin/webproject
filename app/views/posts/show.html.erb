@@ -1,15 +1,14 @@
 <div class="post-show-topic-wrapper">
   <h2 class="post-show-title">
-    <%= "["+Posttype.find(@post.posttype_id).typename+"]" %>
     <%= @post.topic %>
   </h2>
-  <p class="clearfix">
-    <%= '發布者：' + @post.user.name %>
-    <% if current_user && current_user.adminkey_id == 1 %>
-      <%= link_to '編輯', edit_post_path(@post), :class => "btn btn-primary post-show-btn" %>
-    <% end %>
-  </p>
-  
+  <p><%= "分　類："+Posttype.find(@post.posttype_id).typename%></p>
+  <p><%= '發布者：' + @post.user.name %></p>
+  <p><%= "時　間：" + @post.created_at.to_s(:short) %></p>
+  <% if current_user && current_user.adminkey_id == 1 %>
+      <%= link_to '編輯', edit_post_path(@post), :class => "btn btn-danger post-show-btn" %>
+  <% end %>
 </div>
-<p>文章內容：</p>
+<div class="container clearfix">
   <%= raw (@post.content) %>
+</div>
