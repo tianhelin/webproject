@@ -1,3 +1,6 @@
+.navbar{
+  margin-bottom: 0;
+}
 nav li.nav{
   font-size: 3em;
 }
@@ -68,6 +71,14 @@ h2.welcome-title{
   margin-top: 1em;
 }
 
+.post-show-topic-wrapper{
+  margin-top: 1em;
+}
+.post-show-title{
+  margin-top: 0;
+  width: 100%;
+}
+
 @media (max-width: 450px){
   .account-mng-table .account-email{
     display: none;
@@ -75,6 +86,10 @@ h2.welcome-title{
 
   .account-selectbox .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
     width: 100%;
+  }
+  
+  .post-show-btn{
+    float: right;
   }
 }
 @media (min-width: 451px){

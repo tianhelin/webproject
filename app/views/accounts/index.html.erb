@@ -1,11 +1,4 @@
 <h2 class="text-center welcome-title">帳號管理</h2>
-<tr>
-  <td>名稱</td>
-  <td>生日</td>
-  <td class="account-email">電子信箱</td>
-  <td>權限</td>
-  <td>修改</td>
-</tr>
 <%= form_tag accounts_path, :class => "clearfix" do %>
 <table class="table account-mng-table table-striped">
   <% @accounts.each do |account| %>
