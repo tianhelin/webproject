@@ -7,12 +7,14 @@ def index
 end
 
 def create
-  @adminset = params[:adminset]
-  @adminset.each do |user_id,adminkey|
-    if adminkey != ""
-      @user = User.find(user_id)
-      @user.adminkey_id = adminkey
-      @user.save(account_params)
+  if params[:adminset] != nil
+    @adminset = params[:adminset]
+    @adminset.each do |user_id,adminkey|
+      if adminkey != ""
+        @user = User.find(user_id)
+        @user.adminkey_id = adminkey
+        @user.save(account_params)
+      end
     end
   end
   redirect_to accounts_path
