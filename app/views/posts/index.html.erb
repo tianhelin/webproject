@@ -1,28 +1,23 @@
-<div class="post-body">
-  <h2 class="text-center welcome-title">歡迎回來！近期新聞如下：</h2>
-  <p class="text-center welcome-note">(或利用右上角功能鍵進入各個頁面)</p>
-  <div class="clearfix">
-    <div class="col-xs-6 text-center">新聞標題</div>
-    <div class="col-xs-6 text-center">更新時間</div>
-  </div>
-  <% @posts.each do |p| %>
-    <%= link_to post_path(p),class:"clearfix" do %>
-      <div class="postwrapper clearfix">
-        <div class="col-xs-6 text-center news-topic">
-              <%= p.topic %>
-        </div>
-        <div class="col-xs-6 text-center">
-              <%= p.updated_at.to_s(:short) %>
-        </div>
-    </div>
-    <% end %>
+<h2 class="text-center welcome-title">歡迎回來！近期新聞如下：</h2>
+<p class="text-center welcome-note">(或利用右上角功能鍵進入各個頁面)</p>
+<table class="table table-hover text-center" id="newstable">
+  <tr>
+    <td>新聞標題</td>
+    <td>更新時間</td>
+  </tr>
+<% @posts.each do |p| %>
+  <tr>
+    <td><%= link_to p.topic , post_path(p),:class => "news newstopic" %></td>
+    <td><%= link_to p.updated_at.to_s(:short) , post_path(p) ,:class => 'news newstime' %></td>
+  </tr>
+<% end %>
+</table>
+<div class="text-center">
+  <%= paginate @posts %>
+  </br>
+  <% if current_user && current_user.adminkey_id == 1 %>
+    <%= link_to '新增文章', new_post_path, :class => "btn btn-primary" %>
+  <% else %>
+    <%= link_to '開始上課', classrooms_path, :class => "btn btn-lg btn-primary" %>
   <% end %>
-  <div class="text-center">
-    <%= paginate @posts %>
-    </br>
-    <% if current_user && current_user.adminkey_id == 1 %>
-      <%= link_to '新增文章', new_post_path, :class => "btn btn-primary" %>
-    <% end %>
-  </div>
 </div>
-

@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.where("posttype_id=?",1)
     @posts = @posts.order( 'updated_at DESC' )
-    @posts = @posts.page(params[:page]).per(7)
+    @posts = @posts.page(params[:page]).per(5)
   end
   
   def new
