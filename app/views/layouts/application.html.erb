@@ -13,11 +13,9 @@
   </head>
   <body>
     <%= render "common/navbar" %>
-    <div class="body-wrapper">
-      <div class="body-render">
+    <div class="body-render">
       <%= yield %>
-      </div>
-      <%= render "common/footer" %>
     </div>
+    <%= render "common/footer" %>
   </body>
 </html>

@@ -2,4 +2,5 @@
 <%= form_for @post do |f| %>
 <%= render :partial => 'form', :locals => {:f => f} %>
 <%= f.submit "發表" ,:class => 'post-submit-btn btn btn-primary pull-right'%>
+<div class="clearfix"></div>
 <% end %>
