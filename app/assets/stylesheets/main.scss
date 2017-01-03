@@ -54,9 +54,6 @@ h2.welcome-title{
 }
 
 // post.index settings
-#newstable{
-  margin: 0 auto;
-}
 #newstable > tbody > tr > td{
   padding: 0;
 }
@@ -117,10 +114,25 @@ table#newstable td a{
 .post-show-content{
   padding-top: 1em;
 }
+//notie.index settings
+#notice-table > tbody > tr > td{
+  padding: 0;
+}
+
+table#notice-table td a{
+  display: block;
+  text-decoration: none;
+  line-height: 200%;
+  color: black;
+}
 
 //RWD settings
 @media (max-width: 450px){
   .account-mng-table .account-email{
+    display: none;
+  }
+  
+  .notice-sender{
     display: none;
   }
 
