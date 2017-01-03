@@ -1,14 +1,16 @@
 <div class="post-show-topic-wrapper">
-  <h2 class="post-show-title">
-    <%= @post.topic %>
-  </h2>
-  <p><%= "分　類："+Posttype.find(@post.posttype_id).typename%></p>
-  <p><%= '發布者：' + @post.user.name %></p>
-  <p><%= "時　間：" + @post.created_at.to_s(:short) %></p>
-  <% if current_user && current_user.adminkey_id == 1 %>
-      <%= link_to '編輯', edit_post_path(@post), :class => "btn btn-danger post-show-btn" %>
-  <% end %>
+  <div class="xs-60-container">
+    <h2 class="post-show-title">
+      <%= @post.topic %>
+    </h2>
+    <p><%= "分　類："+Posttype.find(@post.posttype_id).typename%></p>
+    <p><%= '發布者：' + @post.user.name %></p>
+    <p><%= "時　間：" + @post.created_at.to_s(:short) %></p>
+    <% if current_user && current_user.adminkey_id == 1 %>
+        <%= link_to '編輯', edit_post_path(@post), :class => "btn btn-danger post-show-btn" %>
+    <% end %>
+  </div>
 </div>
-<div class="post-show-content container clearfix">
+<div class="post-show-content xs-60-container container clearfix">
   <%= raw (@post.content) %>
 </div>

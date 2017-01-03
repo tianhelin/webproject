@@ -1,11 +1,13 @@
-<h2 class="welcome-title">
-  <%= '編輯：[' %>
-  <%=  Posttype.find(@post.posttype_id).typename  %>
-  <%= ']' %>
-  <%= @post.topic %>
-</h2>
-<%= form_for @post do |f| %>
-  <%= render :partial => 'form', :locals => {:f => f} %>
-<%= f.submit "更新" ,:class => 'post-submit-btn btn btn-primary pull-right'%>
-<div class="clearfix"></div>
-<% end %>
+<div class="xs-60-container">
+  <h2 class="welcome-title">
+    <%= '編輯：[' %>
+    <%=  Posttype.find(@post.posttype_id).typename  %>
+    <%= ']' %>
+    <%= @post.topic %>
+  </h2>
+  <%= form_for @post do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+  <%= f.submit "更新" ,:class => 'post-submit-btn btn btn-primary pull-right'%>
+  <div class="clearfix"></div>
+  <% end %>
+</div>

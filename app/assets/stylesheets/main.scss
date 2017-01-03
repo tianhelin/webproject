@@ -99,6 +99,7 @@ table#newstable td a{
 
 // post.show settings
 .post-show-topic-wrapper{
+  margin-top: -1em;
   padding: 0.5em 2em;
   background-color: #7aadff;
   position: relative;
@@ -119,10 +120,6 @@ table#newstable td a{
 
 //RWD settings
 @media (max-width: 450px){
-  #newstable{
-    width: 95%;
-  }
-  
   .account-mng-table .account-email{
     display: none;
   }
@@ -132,10 +129,13 @@ table#newstable td a{
   }
 }
 @media (min-width: 451px){
-  #newstable{
+  .posttype-list{
     width: 60%;
   }
-  .posttype-list{
+  
+  .xs-60-container{
+    position: relative;
+    margin: 0 auto;
     width: 60%;
   }
 }

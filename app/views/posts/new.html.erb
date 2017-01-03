@@ -1,6 +1,8 @@
-<h2 class="welcome-title">新增文章</h2>
-<%= form_for @post do |f| %>
-<%= render :partial => 'form', :locals => {:f => f} %>
-<%= f.submit "發表" ,:class => 'post-submit-btn btn btn-primary pull-right'%>
-<div class="clearfix"></div>
-<% end %>
+<div class="xs-60-container">
+  <h2 class="welcome-title">新增文章</h2>
+  <%= form_for @post do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <%= f.submit "發表" ,:class => 'post-submit-btn btn btn-primary pull-right'%>
+  <div class="clearfix"></div>
+  <% end %>
+</div>
