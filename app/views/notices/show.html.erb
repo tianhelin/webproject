@@ -1,25 +1,10 @@
-<table class="table">
-  <tr>
-    <td>
-      <h1>標題：
-        <%= @notice.topic %>
-      </h1>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <h3>來自於：
-        <%= User.find(@notice.user_id).name %>
-      </h3>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p>內文：</p>
-      <p>
-        <%= raw (@notice.content) %>  
-      </p>
-    </td>
-  </tr>
-</table>
-<%= link_to '回訊息列表', notices_path , :class => "btn btn-default" %>
+<div class="show-topic-wrapper">
+  <div class="xs-60-container">
+    <h2 class="show-title">標題：<%= @notice.topic %></h2>
+    <p>來自於：<%= User.find(@notice.user_id).name %></p>
+  </div>
+</div>
+<div class="show-content xs-60-container container clearfix">
+  <%= raw (@notice.content) %>
+  <%= link_to raw('<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>'),notices_path , :class => "btn btn-back" %>
+</div>

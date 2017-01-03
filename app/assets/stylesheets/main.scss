@@ -1,5 +1,6 @@
 // general css settings
 html{
+  height: 100%;
   background-color: #222;
 }
 
@@ -31,7 +32,7 @@ ul.dropdown-menu span{
 
 .body-render{
   position: relative;
-  min-height: 30em;
+  min-height: 41em;
   background-color: white;
   padding-bottom: 1em;
   padding-top: 1em;
@@ -43,6 +44,15 @@ h2.welcome-title{
 
 .welcome-note{
   margin-bottom: 1em;
+}
+
+a.btn-back{
+  position: fixed;
+  bottom: 0.6em;
+  right: 0;
+  z-index: 20;
+  font-size: 5em;
+  color: rgba(0, 0, 0,0.5);
 }
 
 #footer{
@@ -95,23 +105,22 @@ table#newstable td a{
 }
 
 // post.show settings
-.post-show-topic-wrapper{
+.show-topic-wrapper{
   margin-top: -1em;
   padding: 0.5em 2em;
   background-color: #7aadff;
   position: relative;
 }
-.post-show-title{
+.show-title{
   margin-top: 0;
 }
-
 .post-show-btn{
   position: absolute;
   bottom: 0;
   right: 0;
 }
-
-.post-show-content{
+.show-content{
+  position: relative;
   padding-top: 1em;
 }
 //notie.index settings
@@ -125,6 +134,8 @@ table#notice-table td a{
   line-height: 200%;
   color: black;
 }
+
+//notice.show settings
 
 //RWD settings
 @media (max-width: 450px){

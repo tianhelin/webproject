@@ -1,6 +1,6 @@
-<div class="post-show-topic-wrapper">
+<div class="show-topic-wrapper">
   <div class="xs-60-container">
-    <h2 class="post-show-title">
+    <h2 class="show-title">
       <%= @post.topic %>
     </h2>
     <p><%= "分　類："+Posttype.find(@post.posttype_id).typename%></p>
@@ -11,6 +11,7 @@
     <% end %>
   </div>
 </div>
-<div class="post-show-content xs-60-container container clearfix">
+<div class="show-content xs-60-container container clearfix">
   <%= raw (@post.content) %>
+  <%= link_to raw('<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>'),:back , :class => "btn btn-back" %>
 </div>
