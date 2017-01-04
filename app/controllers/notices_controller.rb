@@ -18,12 +18,25 @@ class NoticesController < ApplicationController
     if params[:commit] == "送出全站通知"
       @recipient = User.all.ids
     else
-      @recipient = params[:recipient_id]
-    end
-    @recipient.each do |r|
-      @notice = current_user.notices.new(notice_params)
-      @notice[:recipient_id] = r
-      @notice.save
+      if params[:recipient_id] != nil
+        @recipient = params[:recipient_id]
+        @recipient.each do |r|
+          @notice = current_user.notices.new(notice_params)
+          @notice[:recipient_id] = r
+          @notice.save
+        end
+      end
+      if params[:classroom_id] != nil
+        @classroom = params[:classroom_id]
+        @classroom.each do |c|
+          @recipient = Classroom.find(c).users.ids
+          @recipient.each do |r|
+            @notice = current_user.notices.new(notice_params)
+            @notice[:recipient_id] = r
+            @notice.save
+          end
+        end
+      end
     end
     redirect_to notices_path
   end

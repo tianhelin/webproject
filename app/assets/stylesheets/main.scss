@@ -140,11 +140,11 @@ li.list-group-item label{
   display: block;
 }
 
-.user-list .panel-heading,.user-list .list-group-item{
+.user-list .panel-heading,.user-list .list-group-item,.class-list .panel-heading,.class-list .list-group-item{
   padding: 0;
 }
 
-.user-list a{
+.user-list a,.class-list a{
   display: block;
   padding: 10px 15px;
   text-decoration: none;

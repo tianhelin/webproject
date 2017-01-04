@@ -23,16 +23,16 @@ $(document).on('turbolinks:load', function() {
     event.preventDefault();
     $(this).toggleClass('hidden');
     $(this).siblings('a').toggleClass("hidden");
-    $('ul.user-list li').addClass('active');
-    $('ul.user-list li').children("input").prop('checked', true)
+    $(this).siblings('.panel').children('ul').children('li').addClass('active');
+    $(this).siblings('.panel').children('ul').children('li').children('input').prop('checked', true)
   });
   
   $('a.select-cancel-btn').click(function(){
     event.preventDefault();
     $(this).toggleClass('hidden');
     $(this).siblings('a').toggleClass("hidden");
-    $('ul.user-list li').removeClass('active');
-    $('ul.user-list li').children("input").prop('checked', false)
+    $(this).siblings('.panel').children('ul').children('li').removeClass('active');
+    $(this).siblings('.panel').children('ul').children('li').children('input').prop('checked', false)
   });
   
 });
