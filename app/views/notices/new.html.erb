@@ -1,33 +1,27 @@
-<h1>
-  <% if params[:to] == 'all' %>
-    <%= '新增全站通知' %>
-  <% else %>
-    <%= '新增通知' %>  
-  <% end %>
-</h1>  
-  
-
-<%= form_for @notice do |f| %>
-  <%= f.label :topic ,'標題' %>
-  <%= f.text_field :topic %>
-  <br>
-  <%= f.label :content,'內文' %>
-  <div data-no-turbolink>
-  <%= f.cktext_area :content, cols: 40 %>
-  </div>
-  <% if params[:to] != 'all' %>
-    <h1>收件者：</h1></br>
-    <% User.all.each do |u| %>
-      <%= check_box_tag "recipient_id[]", u.id %>
-      <%= f.label :recipient_id, u.name %>
+<div class="xs-60-container">
+  <h2 class="welcome-title">
+    <% if params[:to] == 'all' %>
+      <%= '新增全站通知' %>
+    <% else %>
+      <%= '新增通知' %>  
     <% end %>
+  </h2>
+  <%= form_for @notice do |f| %>
+    <div class="input-group">
+      <%= f.label :topic ,'標題',:class =>'input-group-addon' %>
+      <%= f.text_field :topic ,:class => "form-control"  %>
+    </div>
     </br>
-    <%= f.submit '送出通知',:class => 'btn btn-default' %>
-  <% else %>
-    <%= f.submit '送出全站通知',:class => 'btn btn-default' %>
+    <%= f.text_area :content, cols: 40,:id => 'notice_editor',:class =>"form-control" %>
+    <script>CKEDITOR.replace( 'notice_editor' );</script>
+
+    <% if params[:to] != 'all' %>
+      <%= render :partial => 'checkboxlist', :locals => {:f => f} %>
+      </br>
+      <%= f.submit '送出通知',:class => 'btn btn-primary' %>
+    <% else %>
+      <%= f.submit '送出全站通知',:class => 'btn btn-primary' %>
+    <% end %>
   <% end %>
-<% end %>
-
-<p><%= link_to '回首頁' , posts_path, :class => 'btn btn-default' %></p>
-
-
+  
+</div>

@@ -135,7 +135,24 @@ table#notice-table td a{
   color: black;
 }
 
-//notice.show settings
+//notice.new settings
+li.list-group-item label{
+  display: block;
+}
+
+.user-list .panel-heading{
+  padding: 0;
+}
+.user-list a{
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: black;
+}
+
+.fa{
+  font-size: 1.5em;
+}
 
 //RWD settings
 @media (max-width: 450px){

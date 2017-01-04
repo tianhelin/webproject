@@ -1,0 +1,22 @@
+<h2 class="welcome-title">
+  收件者：
+</h2>
+<div class="panel panel-default user-list">
+  <div class="panel-heading user-list">
+    <a href="#" class="panel-title">
+      個別使用者
+      <i class="fa fa-plus pull-right" aria-hidden="true"></i>
+      <i class="fa fa-minus pull-right hidden" aria-hidden="false"></i>
+    </a>
+  </div>
+  <ul class="list-group penel-body hidden">
+    <% User.all.each do |u| %>
+      <li class="list-group-item">
+        <label>
+          <%= check_box_tag "recipient_id[]", u.id %>
+          <%= u.name %>
+        </label>
+      </li>
+    <% end %>
+  </ul>
+</div>
