@@ -7,8 +7,10 @@ $(document).on('turbolinks:load', function() {
        CKEDITOR.replace(id);
   }});
   
-  $('.list-group-item > label').change(function(){
+  $('.list-group-item a').click(function(){
+    event.preventDefault();
     $(this).parent().toggleClass("active");
+    $(this).siblings("input").prop('checked', true)
   });
   
   $('a.panel-title').click(function(){

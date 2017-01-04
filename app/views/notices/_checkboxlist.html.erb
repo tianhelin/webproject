@@ -9,12 +9,11 @@
       <i class="fa fa-minus pull-right hidden" aria-hidden="false"></i>
     </a>
   </div>
-  <ul class="list-group penel-body hidden">
+  <ul class="list-group penel-body user-list hidden">
     <% User.all.each do |u| %>
       <li class="list-group-item">
-        <label>
-          <%= check_box_tag "recipient_id[]", u.id %>
-          <%= u.name %>
+          <%= check_box_tag "recipient_id[]", u.id,false,:class => 'hidden' %>
+          <a class="" href="#"><%= u.name %></a>
         </label>
       </li>
     <% end %>
