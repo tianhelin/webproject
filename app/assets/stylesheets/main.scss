@@ -151,12 +151,14 @@ li.list-group-item label{
   color: black;
 }
 
-.user-list a.panel-title{
-  
-}
-
 .fa{
   font-size: 1.5em;
+}
+
+.select-all-btn ,.select-cancel-btn{
+  border-radius: 4px 4px 0 0;
+  border-bottom: 0;
+  background-color: #f5f5f5;
 }
 
 //RWD settings

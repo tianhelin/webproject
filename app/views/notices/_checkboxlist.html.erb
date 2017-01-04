@@ -1,6 +1,10 @@
 <h2 class="welcome-title">
   收件者：
 </h2>
+
+<a href="#" class="btn btn-default user-list select-all-btn pull-right">全選</a>
+<a href="#" class="btn btn-default user-list select-cancel-btn pull-right hidden">取消全選</a>
+<div class="clearfix"></div>
 <div class="panel panel-default user-list">
   <div class="panel-heading user-list">
     <a href="#" class="panel-title">
@@ -13,7 +17,7 @@
     <% User.all.each do |u| %>
       <li class="list-group-item">
           <%= check_box_tag "recipient_id[]", u.id,false,:class => 'hidden' %>
-          <a class="" href="#"><%= u.name %></a>
+          <a class="user-list-link" href="#"><%= u.name %></a>
         </label>
       </li>
     <% end %>

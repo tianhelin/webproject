@@ -19,4 +19,20 @@ $(document).on('turbolinks:load', function() {
     $(this).parent().next().toggleClass("hidden");
   });
   
+  $('a.select-all-btn').click(function(){
+    event.preventDefault();
+    $(this).toggleClass('hidden');
+    $(this).siblings('a').toggleClass("hidden");
+    $('ul.user-list li').addClass('active');
+    $('ul.user-list li').children("input").prop('checked', true)
+  });
+  
+  $('a.select-cancel-btn').click(function(){
+    event.preventDefault();
+    $(this).toggleClass('hidden');
+    $(this).siblings('a').toggleClass("hidden");
+    $('ul.user-list li').removeClass('active');
+    $('ul.user-list li').children("input").prop('checked', false)
+  });
+  
 });

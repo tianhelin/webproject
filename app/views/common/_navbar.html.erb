@@ -15,7 +15,9 @@
         <a href="<%= notices_path %>">
           <i class="fa fa-envelope" aria-hidden="true"></i><span>通知</span>
           <% if Notice.where("recipient_id = ? AND readed = ?", current_user.id , false ).exists? == true %>
-            <%= Notice.where("recipient_id = ? AND readed = ?", current_user.id , false ).count.to_s %>
+            <span class="badge">
+              <%= Notice.where("recipient_id = ? AND readed = ?", current_user.id , false ).count.to_s %>
+            </span>
           <% end %>
         </a>
       </li>
