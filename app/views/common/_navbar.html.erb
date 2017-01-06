@@ -48,14 +48,12 @@
     </li>
   <% end %>
   <% else %>
-    <ul class="nav nav-pills pull-right">
-      <li role="presentation">
-        <%= link_to('註冊', new_registration_path(:user)) %>
-      </li>
-      <li role="presentation">
-        <%= link_to('登入', new_session_path(:user)) %>
-      </li>
-    </ul>
+    <li class="nav pull-right">
+      <%= link_to('註冊', new_registration_path(:user),:class => 'btn btn-primary') %>
+    </li>
+    <li class="nav pull-right">
+      <%= link_to('登入', new_session_path(:user),:class => 'btn btn-primary') %>
+    </li>
   <% end %>
 </nav>
 
