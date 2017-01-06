@@ -34,7 +34,7 @@ ul.dropdown-menu span{
   position: relative;
   min-height: 41em;
   background-color: white;
-  padding-bottom: 1em;
+  margin-bottom: 1em;
   padding-top: 1em;
 }
 
@@ -163,6 +163,12 @@ li.list-group-item label{
   background-color: #f5f5f5;
 }
 
+//devise-edit settings
+  .devise form .actions{
+    margin-bottom: 1em;
+  }
+
+
 //RWD settings
 @media (max-width: 450px){
   a.btn-back{
@@ -196,4 +202,9 @@ li.list-group-item label{
     width: 60%;
   }
   
+  //devise-edit settings
+  .devise form .form-group{
+    width: 40%;
+  }
+
 }
