@@ -1,7 +1,8 @@
 <div class="show-topic-wrapper">
   <div class="xs-60-container">
-    <h2 class="show-title">標題：<%= @notice.topic %></h2>
-    <p>來自於：<%= User.find(@notice.user_id).name %></p>
+    <h2 class="show-title"><%= @notice.topic %></h2>
+    <p>來　自：<%= User.find(@notice.user_id).name %></p>
+    <p>時　間：<%= @notice.created_at.to_s(:short) %></p>
   </div>
 </div>
 <div class="show-content xs-60-container container clearfix">

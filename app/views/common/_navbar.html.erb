@@ -49,10 +49,10 @@
   <% end %>
   <% else %>
     <li class="nav pull-right">
-      <%= link_to('註冊', new_registration_path(:user),:class => 'btn btn-primary') %>
+      <%= link_to('登入', new_session_path(:user),:class => 'btn btn-primary') %>
     </li>
     <li class="nav pull-right">
-      <%= link_to('登入', new_session_path(:user),:class => 'btn btn-primary') %>
+      <%= link_to('註冊', new_registration_path(:user),:class => 'btn btn-primary') %>
     </li>
   <% end %>
 </nav>
