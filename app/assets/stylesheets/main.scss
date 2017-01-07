@@ -195,8 +195,37 @@ table#homework-table tr.classroom-name{
   background-color: white;
   padding: 1em;
 }
+
+//homeworkpost-edit settings
+.return-history{
+  margin-top: 1em;
+}
+a.return-history-title{
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.return-history-title .welcome-title{
+  margin: 0;
+}
+
+.return-history-title .fa{
+  font-size: 1em;
+}
+
+.return-history .panel-heading{
+  padding: 0;
+}
+
+
 //RWD settings
 @media (max-width: 450px){
+  h2.welcome-title{
+    font-size: 1.2em;
+    height: 1em;
+  }
   a.btn-back{
     bottom: 0.6em;
   }

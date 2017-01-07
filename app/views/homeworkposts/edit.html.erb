@@ -1,23 +1,41 @@
 <%= form_for @homeworkpost do |f| %>
-  <h2>
-    <%= Homework.find(@homeworkpost.homework_id).title %>
-  </h2>
-  <p>
-    <%= raw (Homework.find(@homeworkpost.homework_id).describe) %>
-  </p>
-  <%= f.label :content,'繳交內容' %>
-  <div data-no-turbolink>
-  <%= f.cktext_area :content, cols: 40 %>
+  <div class="homework-describe">
+    <div class="show-topic-wrapper">
+      <h2 class="welcome-title">
+        <%= Homework.find(@homeworkpost.homework_id).title %>
+      </h2>
+    </div>
+    <div class="show-content clearfix">
+      <%= raw (Homework.find(@homeworkpost.homework_id).describe) %>
+    </div>
   </div>
-  <%= f.submit "繳交" ,:class => 'btn btn-default'%>
+  <div class="xs-60-container">
+  <h2 class="welcome-title">繳交內容：</h2>
+  <%= f.text_area :content, cols: 40,:id => 'homeworkpost_editor',:class =>"form-control" %>
+  <script>CKEDITOR.replace( 'homeworkpost_editor' );</script>
+  </br>
+  <%= f.submit "繳交" ,:class => 'btn btn-primary pull-right'%>
 <% end %>
-<h3>退件歷史</h3>
-<table class="table">
-  <% @homeworkpost.notices.each do |notice| %>
-    <tr>
-      <td>時間：<%= notice.created_at %></td></tr>
-      <tr><td>退件內容：<%= raw notice.content %></td></tr>
-  <% end %>
-</table>
-
-<p><%= link_to '回首頁' , posts_path,:class => 'btn btn-default' %></p>
+<div class="clearfix"></div>
+  <div class="return-history panel panel-default">
+    <div class="panel-heading">
+      <a href="#" class="return-history-title">
+        <h2 class="welcome-title">
+          退件歷史
+          <i class="fa fa-plus pull-right" aria-hidden="true"></i>
+          <i class="fa fa-minus pull-right hidden" aria-hidden="false"></i>
+        </h2>
+      </a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="panel-body hidden">
+      <table class="table">
+        <% @homeworkpost.notices.each do |notice| %>
+          <tr>
+            <td>時間：<%= notice.created_at.to_s(:short) %></td></tr>
+            <tr><td>退件內容：<%= raw notice.content %></td></tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

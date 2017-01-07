@@ -34,5 +34,9 @@ $(document).on('turbolinks:load', function() {
     $(this).siblings('.panel').children('ul').children('li').removeClass('active');
     $(this).siblings('.panel').children('ul').children('li').children('input').prop('checked', false)
   });
-  
+  $('a.return-history-title').click(function(){
+    event.preventDefault();
+    $(this).parent().siblings('.panel-body').toggleClass('hidden');
+    $(this).children().children('.fa').toggleClass('hidden');
+  })
 });
