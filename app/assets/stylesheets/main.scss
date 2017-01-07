@@ -196,6 +196,28 @@ table#homework-table tr.classroom-name{
   padding: 1em;
 }
 
+.handin .panel{
+  margin-bottom: 0;
+}
+
+.handin .panel-heading{
+  padding: 0;
+}
+
+.handin h5.welcome-title{
+  padding: 10px;
+  margin: 0;
+}
+
+.handin a.return-history-title{
+  padding: 0;
+}
+
+.handin .handin-false{
+  background-color: #d9534f;
+  color: #fff;
+}
+
 //homeworkpost-edit settings
 .return-history{
   margin-top: 1em;
