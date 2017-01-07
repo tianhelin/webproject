@@ -4,7 +4,7 @@ class ClassroomsController < ApplicationController
   before_action :checkadmin, :only => [:new,:create,:edit,:update,:destroy]
 
   def index
-    @classrooms = current_user.classrooms.order('approved DESC')
+    @classrooms = current_user.classrooms.order(created_at: :DESC)
   end
   
   def new

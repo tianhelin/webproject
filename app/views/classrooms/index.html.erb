@@ -1,34 +1,35 @@
-<h1>課程管理</h1>
-<table class="table">
-  <td>課程名稱</td>
-  <td>申請狀態</td>
-  <% if adminornot?(current_user) %>
-    <td>管理者功能</td>
-  <% end %>
+<div class="xs-60-container container">
+  <h2 class="welcome-title text-center">課程總覽</h2>
   <% @classrooms.each do |classroom| %>
-    <tr>
-      <td>
-        <%= classroom.name %>
-      </td>
-      <td>
-        <% if Userclassroomship.where('user_id = ? AND classroom_id = ?',current_user.id,classroom.id).first.approved %>
-          <%= '已加入課程' %>
-        <% else %>
-          <%= '等待審核中' %>
-        <% end %>
-      </td>
-      <% if current_user && current_user.adminkey_id == 1 %>
-      <td>
-        <%= link_to '編輯',edit_classroom_path(classroom), :class => 'btn btn-default' %>
-        <%= link_to '刪除',classroom_path(classroom),:method => :delete, :class => "btn btn-default" %>
-      </td>
-      <% end %>
-    </tr>
+    <% if Userclassroomship.where('user_id = ? AND classroom_id = ?',current_user.id,classroom.id).first.approved %>
+      <div class="classroom-back">
+        <a href="<%= classroom_path(classroom.id) %>" class="classroom-link">
+          <div class="panel panel-primary">
+            <div class="classroom-title panel-heading">
+              <div class="text-center">
+                <%= classroom.name %>
+              </div>
+            </div>
+            <div class="classroom-content panel-body">
+              <%= classroom.introduction %>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% else %>
+    <div class="classroom-back panel panel-default">
+      <div class="classroom-title text-center panel-heading">
+        <%= classroom.name %> (待審核)
+      </div>
+      <div class="classroom-content panel-body">
+        <%= classroom.introduction %>
+      </div>
+    </div>
+    <% end %>
+  
   <% end %>
-</table>
-<%= link_to '加入新課程' , userclassroomships_path, :class => 'btn btn-default' %>
-<% if current_user && current_user.adminkey_id == 1 %>
-  <%= link_to '(管理者)新增課程',new_classroom_path, :class => 'btn btn-default' %>
-  <%= link_to '(管理者)審核申請',userclassroomship_mngindex_path, :class => 'btn btn-default' %>
-<% end %>
-<p><%= link_to '回首頁' , posts_path, :class => 'btn btn-default' %></p>
+  <% if current_user && current_user.adminkey_id == 1 %>
+    <%= link_to '(管理者)新增課程',new_classroom_path, :class => 'btn btn-default' %>
+  <% end %>
+  <div class="clearfix"></div>
+</div>

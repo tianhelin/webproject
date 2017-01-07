@@ -1,9 +1,11 @@
 <div class="xs-60-container">
-  <h2 class="text-center welcome-title">歡迎回來！近期新聞如下：</h2>
-  <p class="text-center welcome-note">(或利用右上角功能鍵進入各個頁面)</p>
+  <% if params[:classroom_id] == nil %>
+    <h2 class="text-center welcome-title">歡迎回來！近期新聞如下：</h2>
+    <p class="text-center welcome-note">(或利用右上角功能鍵進入各個頁面)</p>
+  <% end %>
   <table class="table table-hover text-center" id="newstable">
     <tr>
-      <td>新聞標題</td>
+      <td>文章標題</td>
       <td>更新時間</td>
     </tr>
   <% @posts.each do |p| %>

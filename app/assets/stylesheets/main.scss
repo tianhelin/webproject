@@ -78,6 +78,9 @@ table#newstable td a{
   color: black;
 }
 
+table#newstable {
+  margin-bottom: 0;
+}
 // posttype.index settings
 .posttype-list{
   margin: 1em auto;
@@ -222,6 +225,10 @@ table#homework-table tr.classroom-name{
   color: #fff;
 }
 
+#handin-title{
+  background-color: #aaefd1;
+}
+
 //homeworkpost-edit settings
 .return-history{
   margin-top: 1em;
@@ -244,7 +251,26 @@ a.return-history-title{
 .return-history .panel-heading{
   padding: 0;
 }
+//classroom-index settings
+.classroom-back{
+  width: 45%;
+  display: inline-block;
+  margin: 0.5em;
+}
 
+a.classroom-link{
+  display: block;
+  text-decoration: none;
+}
+
+.classroom-title{
+  min-height: 5em;
+  line-height: 5em;
+}
+
+.classroom-content{
+  color: black;
+}
 
 //RWD settings
 @media (max-width: 450px){
