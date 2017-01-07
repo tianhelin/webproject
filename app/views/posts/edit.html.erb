@@ -7,7 +7,10 @@
   </h2>
   <%= form_for @post do |f| %>
     <%= render :partial => 'form', :locals => {:f => f} %>
-  <%= f.submit "更新" ,:class => 'post-submit-btn btn btn-primary pull-right'%>
-  <div class="clearfix"></div>
+  <div class="text-center">
+    <%= f.submit "更新" ,:class => 'post-submit-btn btn btn-primary'%>
+  </div>
+  </br>
+  <%= link_to raw('<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>'),posts_path , :class => "btn btn-back" %>
   <% end %>
 </div>
