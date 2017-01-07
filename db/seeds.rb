@@ -9,7 +9,6 @@
 Adminkey.create!(:rolename =>'管理者')
 Adminkey.create!(:rolename =>'學生')
 Adminkey.create!(:rolename =>'老師')
-Adminkey.create!(:rolename =>'家長')
 User.create!(:email => "jellybox@gmail.com",:name => "Jimmy Liu",:accountname => "jellybox" ,:password => "default",:password_confirmation => "default",:adminkey_id => 1)
 User.create!(:email => "test@aaa.com",:name => "Test Student",:accountname => "teststudent" ,:password => "default",:password_confirmation => "default")
 Posttype.create!(:typename =>'news')
