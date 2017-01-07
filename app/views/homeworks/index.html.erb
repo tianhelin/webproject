@@ -1,23 +1,28 @@
-<h1>我的作業</h1>
-
-<% current_user.classrooms.each do |classroom| %>
-  <h3><%= classroom.name %></h3>
-  <table class="table">
-    <% classroom.homeworks.each do |homework| %>
-    <tr>
-      <td><%= link_to homework.title,homework_path(homework) %></td>
-      <td><%= homework.created_at %></td>
-      <% if current_user && current_user.adminkey_id == 1 %>
-        <td>
-          <%= link_to "編輯", edit_homework_path(homework), :class => "btn btn-default" %>
-          <%= link_to '刪除', homework_path(homework),:method => :delete, :data => { :confirm => "確定刪除?" }, :class => "btn btn-default" %>
-        </td>
-      <% end %>
+<div class="xs-60-container container">
+  <h2 class="welcome-title text-center">我的作業</h2>
+  <table class="table table-hover" id="homework-table">
+  <% current_user.classrooms.order(created_at: :DESC).each do |classroom| %>
+    <tr class="classroom-name">
+      <td><h3>課程：<%= classroom.name %></h3></td>
+      <td></td>
     </tr>
+    <tr>
+      <td>作業</td>
+      <td>發布時間</td>
+    </tr>
+    
+    
+    <% classroom.homeworks.each do |homework| %>
+      <tr>
+        <td><%= link_to homework.title,homework_path(homework) %></td>
+        <td><%= link_to homework.created_at.to_s(:short),homework_path(homework) %></td>
+      </tr>
     <% end %>
+  <% end %>
   </table>
-<% end %>
-<% if current_user && current_user.adminkey_id == 1 %>
-  <%= link_to '新增功課',new_homework_path, :class => 'btn btn-default' %>
-<% end %>
-<%= link_to '回首頁',posts_path, :class => 'btn btn-default' %>
+  <div class="text-center">
+    <% if current_user && current_user.adminkey_id == 1 %>
+      <%= link_to '新增功課',new_homework_path, :class => 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

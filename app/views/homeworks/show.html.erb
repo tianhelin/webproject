@@ -1,29 +1,36 @@
-<h1>
-  <%= @homework.title %>
-</h1>
-<%= raw (@homework.describe) %>
-<% if current_user.adminkey_id == 1 %>
-  <%= link_to '編輯', edit_homework_path(@homework), :class => "btn btn-default" %>
-<% end %>
-
-<% if current_user.adminkey_id == 1 %>
-  <h3>學員繳交</h3>
-  <% @homework.homeworkposts.each do |post| %>
-    <div class='post handin-<%= post.handin%>'>
-      <div class="post name">
-        <%= User.find(post.user_id).name %>
-        (<% if post.handin == true%>已繳<% else %>未繳<% end %>)
-        <%= link_to '退件',returnhomework_homeworkpost_path(post.id), :class => "btn btn-default" %>
+<div class="homework-describe">
+  <div class="show-topic-wrapper">
+    <h2 class="welcome-title">
+      <%= @homework.title %>
+    </h2>
+    <p>時間：<%= @homework.created_at.to_s(:short) %></p>
+  </div>
+  <div class="show-content clearfix">
+    <%= raw (@homework.describe) %>
+    <% if current_user.adminkey_id == 1 %>
+      <%= link_to '編輯', edit_homework_path(@homework), :class => "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
+<div class="xs-60-container">
+  <% if current_user.adminkey_id == 1 %>
+    <h3>學員繳交</h3>
+    <% @homework.homeworkposts.each do |post| %>
+      <div class='post handin-<%= post.handin%>'>
+        <div class="post name">
+          <%= User.find(post.user_id).name %>
+          (<% if post.handin == true%>已繳<% else %>未繳<% end %>)
+          <%= link_to '退件',returnhomework_homeworkpost_path(post.id), :class => "btn btn-default" %>
+        </div>
+        <div class="post content"><%= raw (post.content) %></div>
       </div>
-      <div class="post content"><%= raw (post.content) %></div>
+    <% end %>
+  <% else %>
+    <h2 class="welcome-title text-center">我的繳交結果：</h2>
+    <div class="homework-content"><%= raw (@homework.homeworkposts.where('user_id=?',current_user.id).first.content) %></div>
+    <div class="text-center">
+      <%= link_to '編輯',edit_homeworkpost_path(@homework.homeworkposts.where('user_id=?',current_user.id).first.id), :class => "btn btn-primary" %>
     </div>
   <% end %>
-<% else %>
-  <h3>我的繳交結果：</h3>
-  <div><%= raw (@homework.homeworkposts.where('user_id=?',current_user.id).first.content) %></div>
-  <%= link_to '編輯',edit_homeworkpost_path(@homework.homeworkposts.where('user_id=?',current_user.id).first.id), :class => "btn btn-default" %>
-<% end %>
-
-<p>
-  <%= link_to '回首頁' , posts_path, :class => 'btn btn-default' %>
-</p>
+  <%= link_to raw('<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>'),homeworks_path , :class => "btn btn-back" %>
+</div>

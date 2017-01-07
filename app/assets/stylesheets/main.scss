@@ -164,11 +164,37 @@ li.list-group-item label{
 }
 
 //devise-edit settings
-  .devise form .actions{
-    margin-bottom: 1em;
-  }
+.devise form .actions{
+  margin-bottom: 1em;
+}
+  
+//homework-index settings
+table#homework-table td a{
+  display: block;
+  text-decoration: none;
+  line-height: 200%;
+  color: black;
+}
 
+table#homework-table tr.classroom-name{
+  background-color:#EEE;
+}
 
+//homework-show-settings
+.homework-describe{
+  width: 100%;
+  padding: 1em;
+  margin-top: -1em;
+  background-color: #999999;
+}
+.homework-describe .show-topic-wrapper{
+  margin-top: 0;
+}
+
+.homework-describe .show-content{
+  background-color: white;
+  padding: 1em;
+}
 //RWD settings
 @media (max-width: 450px){
   a.btn-back{
