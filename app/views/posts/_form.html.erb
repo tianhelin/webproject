@@ -3,7 +3,7 @@
   <%= f.text_field :topic,:class => "form-control" %>
 </div>
 <br>
-<div class="input-group col-xs-3">
+<div class="input-group col-xs-5">
   <%= f.label :posttype_id ,'分類',:class => 'input-group-addon' %>
   <%= f.collection_select(:posttype_id, Posttype.all, :id, :typename,{:selected => Posttype.first},:class => 'selectpicker form-control') %>
 </div>

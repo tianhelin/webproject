@@ -10,8 +10,6 @@
       <td>作業</td>
       <td>發布時間</td>
     </tr>
-    
-    
     <% classroom.homeworks.each do |homework| %>
       <tr>
         <td><%= link_to homework.title,homework_path(homework) %></td>

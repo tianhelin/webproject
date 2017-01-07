@@ -1,7 +1,8 @@
-<h1>新增作業</h1>
-<%= form_for @homework do |f| %>
-<%= render :partial => 'form', :locals => {:f => f} %>
-<%= f.submit "發表" ,:class => 'btn btn-default'%>
-<% end %>
-
-<p><%= link_to '回首頁' , posts_path, :class => 'btn btn-default' %></p>
+<div class="xs-60-container homework">
+  <h2 class="welcome-title">新增作業</h2>
+  <%= form_for @homework do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <%= f.submit "發表" ,:class => 'btn btn-primary'%>
+  <% end %>
+  <%= link_to raw('<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>'),homeworks_path , :class => "btn btn-back" %>
+</div>

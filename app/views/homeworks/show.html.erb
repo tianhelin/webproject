@@ -16,32 +16,33 @@
   <% if current_user.adminkey_id == 1 %>
     <h2 class="welcome-title">學員繳交</h2>
     <% @homework.homeworkposts.each do |post| %>
-      <div class='panel panel-default'>
-        <div class="panel-heading post-name handin-<%= post.handin%>">
-          <% if post.handin == true %>
-          <a href="#" class="return-history-title">
+      <% if post.user_id != 1 %>
+        <div class='panel panel-default'>
+          <div class="panel-heading post-name handin-<%= post.handin%>">
+            <% if post.handin == true %>
+            <a href="#" class="return-history-title">
+              <h5 class="welcome-title">
+                <%= User.find(post.user_id).name %>
+                (已繳)
+                <i class="fa fa-plus pull-right" aria-hidden="true"></i>
+                <i class="fa fa-minus pull-right hidden" aria-hidden="false"></i>
+              </h5>
+            </a>
+            <% else %>
             <h5 class="welcome-title">
               <%= User.find(post.user_id).name %>
-              (已繳)
-              <i class="fa fa-plus pull-right" aria-hidden="true"></i>
-              <i class="fa fa-minus pull-right hidden" aria-hidden="false"></i>
+              (未繳）
             </h5>
-          </a>
-          <% else %>
-          <h5 class="welcome-title">
-            <%= User.find(post.user_id).name %>
-            (未繳）
-          </h5>
-          <% end %>
+            <% end %>
+          </div>
+          <div class="panel-body post-content hidden">
+            <%= raw (post.content) %>
+            <% if post.handin? %>
+              <%= link_to '退件',returnhomework_homeworkpost_path(post.id), :class => "btn btn-primary pull-right" %>
+            <% end %>
+          </div>
         </div>
-        <div class="panel-body post-content hidden">
-          <%= raw (post.content) %>
-          <% if post.handin? %>
-            <%= link_to '退件',returnhomework_homeworkpost_path(post.id), :class => "btn btn-primary pull-right" %>
-          <% end %>
-        </div>
-        
-      </div>
+      <% end %>
     <% end %>
   <% else %>
     <h2 class="welcome-title text-center">我的繳交結果：</h2>

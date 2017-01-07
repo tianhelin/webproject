@@ -1,10 +1,13 @@
-<%= f.label :topic ,'標題' %>
-<%= f.text_field :title %>
-<br>
-<%= f.label :classroom_id,'課程' %>
-<%= f.collection_select(:classroom_id,Classroom.all,:id,:name) %>
-<br>
-<%= f.label :describe,'內文' %>
-<div data-no-turbolink>
-<%= f.cktext_area :describe, cols: 40 %>
+<div class="input-group">
+  <%= f.label :topic ,'標題',:class =>'input-group-addon' %>
+  <%= f.text_field :title, :class => 'form-control' %>
 </div>
+<br>
+<div class="input-group col-xs-5">
+  <%= f.label :classroom_id,'課程',:class =>'input-group-addon' %>
+  <%= f.collection_select(:classroom_id,Classroom.all,:id,:name,{:selected => Classroom.first},:class => 'selectpicker form-control') %>
+</div>
+<br>
+<%= f.text_area :describe, cols: 40,:id => 'homework_editor',:class =>"form-control" %>
+<script>CKEDITOR.replace( 'homework_editor' );</script>
+<br>

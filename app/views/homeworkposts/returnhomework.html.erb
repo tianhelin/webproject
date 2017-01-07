@@ -1,10 +1,12 @@
-<h1>編輯退件訊息</h1>
-<%= form_for @notice, :url => sendnotice_homeworkpost_path do |f| %>
-  <div data-no-turbolink>
-  <%= f.cktext_area :content %>
-  </div>
-  <%= hidden_field(:homeworkpost,:id,:value => params[:id]) %>
+<div class="xs-60-container">
+  <h2 class="welcome-title">編輯退件訊息</h2>
+  <%= form_for @notice, :url => sendnotice_homeworkpost_path do |f| %>
+    <%= f.text_area :content, cols: 40,:id => 'notice_editor',:class =>"form-control" %>
+    <script>CKEDITOR.replace( 'notice_editor' );</script>
+    <%= hidden_field(:homeworkpost,:id,:value => params[:id]) %>
     </br>
-    <%= f.submit '送出通知',:class => 'btn btn-default' %>
-<% end %>
-<p><%= link_to '回首頁' , posts_path, :class => 'btn btn-default' %></p>
+    <%= f.submit '送出通知',:class => 'btn btn-primary pull-right' %>
+    <div class="clearfix"></div>
+    </br>
+    <%= link_to raw('<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>'),:back , :class => "btn btn-back" %>
+  <% end %>
