@@ -28,8 +28,11 @@
     <% end %>
   
   <% end %>
+  <div class="clearfix"></div>
   <% if current_user && current_user.adminkey_id == 1 %>
-    <%= link_to '(管理者)新增課程',new_classroom_path, :class => 'btn btn-default' %>
+    <div class="text-center">
+      <%= link_to '新增課程',new_classroom_path, :class => 'btn btn-primary' %>
+    </div>
   <% end %>
   <div class="clearfix"></div>
 </div>

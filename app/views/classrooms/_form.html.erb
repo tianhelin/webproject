@@ -1,9 +1,12 @@
-<%= f.label :name ,'課程名稱' %>
-<%= f.text_field :name %>
+<div class="input-group">
+  <%= f.label :name ,'課程名稱',:class => 'input-group-addon' %>
+  <%= f.text_field :name,:class => 'form-control' %>
+</div>
 <br>
-<%= f.label :introduction ,'課程介紹' %>
-<div data-no-turbolink>
-<%= f.cktext_area :introduction, cols: 40 %>
+<div class="input-group">
+  <%= f.label :introduction ,'課程介紹',:class => 'input-group-addon' %>
+  <%= f.text_area :introduction, cols: 40,:id => 'classroom_editor',:class =>"form-control" %>
+  <script>CKEDITOR.replace( 'classroom_editor' );</script>
 </div>
 <br>
 <%= f.label :applydeadline ,'申請加入期限' %>

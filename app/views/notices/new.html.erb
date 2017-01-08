@@ -17,6 +17,7 @@
 
     <% if params[:to] != 'all' %>
       <%= render :partial => 'checkboxlist', :locals => {:f => f} %>
+      <%= hidden_field_tag 'recipient[]','1' %>
       </br>
       <%= f.submit '送出通知',:class => 'btn btn-primary' %>
     <% else %>
