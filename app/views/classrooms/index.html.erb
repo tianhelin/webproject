@@ -1,4 +1,4 @@
-<div class="xs-60-container container">
+<div class="container">
   <h2 class="welcome-title text-center">課程總覽</h2>
   <% @classrooms.each do |classroom| %>
     <% if Userclassroomship.where('user_id = ? AND classroom_id = ?',current_user.id,classroom.id).first.approved %>
@@ -11,7 +11,7 @@
               </div>
             </div>
             <div class="classroom-content panel-body">
-              <%= classroom.introduction %>
+              <%= raw(classroom.introduction) %>
             </div>
           </div>
         </a>
@@ -22,7 +22,7 @@
         <%= classroom.name %> (待審核)
       </div>
       <div class="classroom-content panel-body">
-        <%= classroom.introduction %>
+        <%= raw(classroom.introduction) %>
       </div>
     </div>
     <% end %>
@@ -36,3 +36,4 @@
   <% end %>
   <div class="clearfix"></div>
 </div>
+</br>

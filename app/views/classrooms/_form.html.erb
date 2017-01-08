@@ -3,11 +3,17 @@
   <%= f.text_field :name,:class => 'form-control' %>
 </div>
 <br>
-<div class="input-group">
-  <%= f.label :introduction ,'課程介紹',:class => 'input-group-addon' %>
-  <%= f.text_area :introduction, cols: 40,:id => 'classroom_editor',:class =>"form-control" %>
-  <script>CKEDITOR.replace( 'classroom_editor' );</script>
+<div class="panel panel-default classroom-introduction">
+  <div class="panel-heading">
+    <%= f.label :introduction ,'課程簡介'%>
+  </div>
+  <div class="panel-body">
+    約20-30字簡單介紹本課程。
+  </div>
 </div>
+  <%= f.text_area :introduction, cols: 40,:id => 'classroom_editor' %>
+  <script>CKEDITOR.replace( 'classroom_editor' );</script>
+
 <br>
 <%= f.label :applydeadline ,'申請加入期限' %>
 <%= f.date_select :applydeadline %>
