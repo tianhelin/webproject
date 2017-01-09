@@ -15,17 +15,11 @@
 <div class="xs-60-container container">
   <table class="table table-hover classroom-table">
     <tr>
-      <td class="text-center">文章分類</td>
       <td class="text-center">標題</td>
       <td class="text-center">時間</td>
     </tr>
     <% Post.where('posttype_id=?',Posttype.where('classroom_id=?',@classroom.id).first.id).each do |article| %>
         <tr>
-          <td class="text-center">
-            <a  href="<%= post_path(article) %>">
-              文章
-            </a>
-          </td>
           <td>
             <a  href="<%= post_path(article) %>">
               <%= article.topic %>
@@ -39,32 +33,28 @@
         </tr>
     <% end %>
     <tr>
-      <td><h2 class="text-center">作業</h2></td>
-      <td></td>
+      <td><h2>未交作業</h2></td>
       <td></td>
     </tr>
+    <tr>
+      <td class="text-center">標題</td>
+      <td class="text-center">時間</td>
+    </tr>
     <% @classroom.homeworks.each do |homework| %>
-      <tr>
-        <td class="text-center">
-          <a href="<%= homework_path(homework)%>">
-            <% if homework.homeworkposts.where('user_id =?',current_user.id).first.handin != true %>
-              未交作業
-            <% else %>
-              作業
-            <% end %>
-          </a>
-        </td>
-        <td>
-          <a href="<%= homework_path(homework)%>">
-            <%= homework.title %>
-          </a>
-        </td>
-        <td class="text-center">
-          <a href="<%= homework_path(homework)%>">
-            <%= homework.created_at.to_s(:short) %>
-          </a>
-        </td>
-      </tr>
+      <% if homework.homeworkposts.where('user_id =?',current_user.id).first.handin != true %>
+        <tr>
+          <td>
+            <a href="<%= homework_path(homework)%>">
+              <%= homework.title %>
+            </a>
+          </td>
+          <td class="text-center">
+            <a href="<%= homework_path(homework)%>">
+              <%= homework.created_at.to_s(:short) %>
+            </a>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </table>
   <%= link_to raw('<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>'),:back , :class => "btn btn-back" %>
