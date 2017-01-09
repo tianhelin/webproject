@@ -283,6 +283,17 @@ a.classroom-link{
   margin-bottom: 0;
 }
 
+//classroom-show settings{
+  table.classroom-table a{
+    display: block;
+    line-height: 200%;
+    text-decoration: none;
+    color: black;
+}
+
+ table.classroom-table tr td{
+   padding: 0;
+ }
 //RWD settings
 @media (max-width: 450px){
   h2.welcome-title{
