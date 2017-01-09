@@ -9,7 +9,7 @@
     <% end %>
   </div>
   <div class="show-content clearfix">
-    <%= sanitize (@homework.describe) %>
+    <%= raw (@homework.describe) %>
   </div>
 </div>
 <div class="xs-60-container handin">
@@ -36,7 +36,7 @@
             <% end %>
           </div>
           <div class="panel-body post-content hidden">
-            <%= sanitize (post.content) %>
+            <%= raw (post.content) %>
             <% if post.handin? %>
               <%= link_to '退件',returnhomework_homeworkpost_path(post.id), :class => "btn btn-primary pull-right" %>
             <% end %>
@@ -50,12 +50,12 @@
       <h2 class="welcome-title text-center">我的繳交結果：</h2>
     </div>
     <div class="show-content">
-      <%= sanitize (@homework.homeworkposts.where('user_id=?',current_user.id).first.content) %>
+      <%= raw (@homework.homeworkposts.where('user_id=?',current_user.id).first.content) %>
       <div class="text-center">
         <%= link_to '編輯',edit_homeworkpost_path(@homework.homeworkposts.where('user_id=?',current_user.id).first.id), :class => "btn btn-primary" %>
       </div>
     </div>
   <% end %>
   </div>
-  <%= link_to sanitize('<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>'),homeworks_path , :class => "btn btn-back" %>
+  <%= link_to raw('<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>'),homeworks_path , :class => "btn btn-back" %>
 </div>

@@ -11,9 +11,7 @@
     約20-30字簡單介紹本課程。
   </div>
 </div>
-  <%= f.text_area :introduction, cols: 40,:id => 'classroom_editor' %>
-  <script>CKEDITOR.replace( 'classroom_editor' );</script>
-
+<%= f.text_area :introduction,:rows =>'3',:class => 'form-control' %>
 <br>
 <%= f.label :applydeadline ,'申請加入期限' %>
 <%= f.date_select :applydeadline %>

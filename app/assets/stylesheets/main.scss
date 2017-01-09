@@ -253,9 +253,9 @@ a.return-history-title{
 }
 //classroom-index settings
 .classroom-back{
-  width: 45%;
+  width: 47%;
   display: inline-block;
-  margin: 0.5em;
+  margin: 0.5em 1% 0.5em 1%;
 }
 
 a.classroom-link{
@@ -264,12 +264,18 @@ a.classroom-link{
 }
 
 .classroom-title{
-  min-height: 5em;
-  line-height: 5em;
+  height: 8em;
+  line-height: 8em;
 }
 
 .classroom-content{
   color: black;
+  height: 5em;
+  overflow-x: hidden
+}
+
+.classroom-link .panel{
+  margin-bottom: 0;
 }
 
 //classroom-new settings
@@ -296,6 +302,10 @@ a.classroom-link{
   }
 
   .account-selectbox .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+    width: 100%;
+  }
+  
+  .classroom-back{
     width: 100%;
   }
 }

@@ -11,7 +11,7 @@
               </div>
             </div>
             <div class="classroom-content panel-body">
-              <%= sanitize(classroom.introduction) %>
+              <%= truncate(raw(classroom.introduction), length:80) %>
             </div>
           </div>
         </a>
@@ -22,7 +22,7 @@
         <%= classroom.name %> (待審核)
       </div>
       <div class="classroom-content panel-body">
-        <%= sanitize(classroom.introduction) %>
+        <%= raw(classroom.introduction) %>
       </div>
     </div>
     <% end %>
