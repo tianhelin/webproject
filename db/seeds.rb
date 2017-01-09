@@ -13,3 +13,4 @@ User.create!(:email => "jellybox@gmail.com",:name => "Jimmy Liu",:accountname =>
 User.create!(:email => "test@aaa.com",:name => "Test Student",:accountname => "teststudent" ,:password => "default",:password_confirmation => "default")
 Posttype.create!(:typename =>'news')
 Posttype.create!(:typename =>'archived')
+Post.create!(:topic => '歡迎！',:content => 'Hello World！',:user_id => 1,:posttype_id => 1)
