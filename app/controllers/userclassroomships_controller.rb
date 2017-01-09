@@ -30,7 +30,7 @@ class UserclassroomshipsController < ApplicationController
           @notice.save
         end
       end
-      redirect_to userclassroomship_mngindex_path
+      redirect_to userclassroomships_path
     end
   end
   

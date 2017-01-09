@@ -10,7 +10,12 @@ $(document).on('turbolinks:load', function() {
   $('.list-group-item a').click(function(){
     event.preventDefault();
     $(this).parent().toggleClass("active");
-    $(this).siblings("input").prop('checked', true)
+    if($(this).siblings("#userclassroomship_user_id_").prop('checked') == true){
+      $(this).siblings("#userclassroomship_user_id_").prop('checked',false);
+    }
+    else{
+      $(this).siblings("#userclassroomship_user_id_").prop('checked',true);
+    }
   });
   
   $('a.panel-title').click(function(){
@@ -38,5 +43,17 @@ $(document).on('turbolinks:load', function() {
     event.preventDefault();
     $(this).parent().siblings('.panel-body').toggleClass('hidden');
     $(this).children().children('.fa').toggleClass('hidden');
-  })
+  });
+  
+  $('a.userclassroomship-link').click(function(){
+    event.preventDefault();
+    $(this).parent().parent().toggleClass("userclassroomship-active");
+    $(this).parent().parent().children('td.userclassroomship-checkbox').children().children(".fa").toggleClass('hidden');
+     if($(this).parent().parent().children('td.userclassroomship-checkbox').children().children("#userclassroomship_user_id_").prop('checked') == true){
+      $(this).parent().parent().children('td.userclassroomship-checkbox').children().children("#userclassroomship_user_id_").prop('checked',false)
+    }
+    else{
+      $(this).parent().parent().children('td.userclassroomship-checkbox').children().children("#userclassroomship_user_id_").prop('checked',true);
+    }
+  });
 });

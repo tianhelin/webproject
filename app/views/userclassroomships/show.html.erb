@@ -2,27 +2,32 @@
   <h2 class="welcome-title">
     審核申請：<%= @classroom.name %>
   </h2>
-  <table class="table table-hover classroom-table userclassroomship-table">
-    <tr class="text-center">
-      <td>使用者名稱</td>
-      <td>生日</td>
-      <td>電子信箱</td>
-      <td>審核通過</td>
-    </tr>
-    <%= form_for @classroom , :url => userclassroomship_approved_path , html:{:method => 'GET'} do |f| %>
+  <%= form_for @classroom , :url => userclassroomship_approved_path , html:{:method => 'GET'} do |f| %>
+    <table class="table classroom-table userclassroomship-table">
+      <tr class="text-center">
+        <td>使用者名稱</td>
+        <td>生日</td>
+        <td>電子信箱</td>
+        <td>審核通過</td>
+      </tr>
       <% @classroom.users.each do |user| %>
         <% if Userclassroomship.where('user_id=? AND classroom_id =?',user.id,params[:id]).first.approved != true %>
           <tr class="text-center">
-            <td><a href="#"><%= user.name %></a></td>
-            <td><a href="#"><%= user.birthday%></a></td>
-            <td><a href="#"><%= user.email %></a></td>
-            <td class="userclassroomship-checkbox"><a href="#"><%= check_box_tag 'userclassroomship[user_id][]', value = user.id %></a></td>
+              <td><a class="userclassroomship-link" href="#"><%= user.name %></a></td>
+              <td><a class="userclassroomship-link" href="#"><%= user.birthday %></a></td>
+              <td><a class="userclassroomship-link" href="#"><%= user.email %></a></td>
+              <td class="userclassroomship-checkbox">
+                <a href="#" class="userclassroomship-link">
+                  <%= check_box_tag 'userclassroomship[user_id][]', user.id,false,:class => 'hidden' %>
+                  <i class="fa fa-check hidden" aria-hidden="true" ></i>
+                </a>
+              </td>
           </tr>
         <% end %>
       <% end %>
+</table>
       <%= hidden_field_tag 'userclassroomship[user_id][]','' %>
       <%= hidden_field_tag 'userclassroomship[classroom_id][]',@classroom.id %>
-  </table>
       <div class="text-center">
         <%= f.submit '送出', :class => 'btn btn-primary' %>
       </div>
