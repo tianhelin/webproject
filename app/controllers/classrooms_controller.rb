@@ -1,5 +1,5 @@
 class ClassroomsController < ApplicationController
-  before_action :set_classroom, :only => [:edit,:update,:destroy]
+  before_action :set_classroom, :only => [:edit,:update,:destroy,:show]
   before_action :authenticate_user!
   before_action :checkadmin, :only => [:new,:create,:edit,:update,:destroy]
 

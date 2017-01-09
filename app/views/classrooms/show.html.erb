@@ -1,0 +1,52 @@
+<div class="xs-60-container container">
+  <h2 class="welcome-title text-center">
+    <%= @classroom.name %>
+  </h2>
+  <table class="table classroom-table">
+    <tr>
+      <td>文章分類</td>
+      <td>標題</td>
+      <td>時間</td>
+    </tr>
+    <% @classroom.homeworks.each do |homework| %>
+      <% if homework.homeworkposts.where('user_id =?',current_user.id).first.handin != true %>
+        <tr>
+          <td>
+            <a href="<%= homework_path(homework)%>">
+              未交作業
+            </a>
+          </td>
+          <td>
+            <a href="<%= homework_path(homework)%>">
+              <%= homework.title %>
+            </a>
+          </td>
+          <td>
+            <a href="<%= homework_path(homework)%>">
+              <%= homework.created_at.to_s(:short) %>
+            </a>
+          </td>
+        </tr>
+      <% end %>
+      <% Post.where('posttype_id=?',Posttype.where('classroom_id=?',@classroom.id).first.id).each do |article| %>
+        <tr>
+          <td>
+            <a  href="<%= post_path(article) %>">
+              文章
+            </a>
+          </td>
+          <td>
+            <a  href="<%= post_path(article) %>">
+              <%= article.topic %>
+            </a>
+          </td>
+          <td>
+            <a  href="<%= post_path(article) %>">
+              <%= article.created_at.to_s(:short) %>
+            </a>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
