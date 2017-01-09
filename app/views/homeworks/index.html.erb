@@ -2,19 +2,21 @@
   <h2 class="welcome-title text-center">我的作業</h2>
   <table class="table table-hover" id="homework-table">
   <% current_user.classrooms.order(created_at: :DESC).each do |classroom| %>
-    <tr class="classroom-name">
-      <td><h3>課程：<%= classroom.name %></h3></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>作業</td>
-      <td>發布時間</td>
-    </tr>
-    <% classroom.homeworks.each do |homework| %>
-      <tr>
-        <td><%= link_to homework.title,homework_path(homework) %></td>
-        <td><%= link_to homework.created_at.to_s(:short),homework_path(homework) %></td>
+    <% if classroom.homeworks.first != nil %>
+      <tr class="classroom-name">
+        <td><h3>課程：<%= classroom.name %></h3></td>
+        <td></td>
       </tr>
+      <tr>
+        <td>作業</td>
+        <td>發布時間</td>
+      </tr>
+      <% classroom.homeworks.each do |homework| %>
+        <tr>
+          <td><%= link_to homework.title,homework_path(homework) %></td>
+          <td><%= link_to homework.created_at.to_s(:short),homework_path(homework) %></td>
+        </tr>
+      <% end %>
     <% end %>
   <% end %>
   </table>
