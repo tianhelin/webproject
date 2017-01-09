@@ -5,7 +5,10 @@
     </h2>
     <p>時間：<%= @homework.created_at.to_s(:short) %></p>
     <% if current_user.adminkey_id == 1 %>
-      <%= link_to '編輯', edit_homework_path(@homework), :class => "btn btn-danger post-show-btn" %>
+    <div class="post-show-btn">
+      <%= link_to '編輯', edit_homework_path(@homework), :class => "btn btn-danger" %>
+      <%= link_to '刪除', homework_path(@homework), :method => :delete, :data => { :confirm => "確定刪除?" }, :class => "btn btn-danger" %>
+    </div>
     <% end %>
   </div>
   <div class="show-content clearfix">
