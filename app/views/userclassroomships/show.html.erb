@@ -2,6 +2,9 @@
   <h2 class="welcome-title">
     審核申請：<%= @classroom.name %>
   </h2>
+  
+  <a href="#" class="btn btn-default select-all-btn userclassroomship pull-right">全選</a>
+  <a href="#" class="btn btn-default select-cancel-btn userclassroomship pull-right hidden">取消全選</a>
   <%= form_for @classroom , :url => userclassroomship_approved_path , html:{:method => 'GET'} do |f| %>
     <table class="table classroom-table userclassroomship-table">
       <tr class="text-center">
@@ -12,7 +15,7 @@
       </tr>
       <% @classroom.users.each do |user| %>
         <% if Userclassroomship.where('user_id=? AND classroom_id =?',user.id,params[:id]).first.approved != true %>
-          <tr class="text-center">
+          <tr class="text-center userclassroomship-tr">
               <td><a class="userclassroomship-link" href="#"><%= user.name %></a></td>
               <td><a class="userclassroomship-link" href="#"><%= user.birthday %></a></td>
               <td><a class="userclassroomship-link" href="#"><%= user.email %></a></td>

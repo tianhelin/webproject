@@ -56,4 +56,16 @@ $(document).on('turbolinks:load', function() {
       $(this).parent().parent().children('td.userclassroomship-checkbox').children().children("#userclassroomship_user_id_").prop('checked',true);
     }
   });
+  
+  $('a.userclassroomship.select-all-btn').click(function() {
+     $('table.userclassroomship-table tr.userclassroomship-tr').addClass('userclassroomship-active');
+     $('.userclassroomship-checkbox').children().children('input').prop('checked',true);
+     $('.userclassroomship-checkbox').children().children('i').removeClass('hidden');
+  });
+  
+    $('a.userclassroomship.select-cancel-btn').click(function() {
+     $('table.userclassroomship-table tr.userclassroomship-tr').removeClass('userclassroomship-active');
+     $('.userclassroomship-checkbox').children().children('input').prop('checked',false);
+     $('.userclassroomship-checkbox').children().children('i').addClass('hidden');
+  });
 });
