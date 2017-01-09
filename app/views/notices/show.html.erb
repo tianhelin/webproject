@@ -6,6 +6,6 @@
   </div>
 </div>
 <div class="show-content xs-60-container container clearfix">
-  <%= raw (@notice.content) %>
-  <%= link_to raw('<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>'),notices_path , :class => "btn btn-back" %>
+  <%= sanitize (@notice.content) %>
+  <%= link_to sanitize('<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>'),notices_path , :class => "btn btn-back" %>
 </div>

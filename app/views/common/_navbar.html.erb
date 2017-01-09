@@ -26,10 +26,10 @@
         <a href="<%=homeworks_path %>"><i class="fa fa-file" aria-hidden="true"></i><span>作業</span></a>
       </li>
       <li>
-        <%= link_to(raw('<i class="fa fa-cog" aria-hidden="true"></i><span>帳號設定</span>'), edit_registration_path(:user)) %>
+        <%= link_to(sanitize('<i class="fa fa-cog" aria-hidden="true"></i><span>帳號設定</span>'), edit_registration_path(:user)) %>
       </li>
       <li>
-        <%= link_to(raw('<i class="fa fa-sign-out" aria-hidden="true"></i><span>登出</span>'), destroy_user_session_path, :method => :delete) %>
+        <%= link_to(sanitize('<i class="fa fa-sign-out" aria-hidden="true"></i><span>登出</span>'), destroy_user_session_path, :method => :delete) %>
       </li>
     </ul>
   </li>
@@ -40,10 +40,10 @@
       </a>
       <ul class="dropdown-menu">
         <li>
-          <%= link_to(raw('<i class="fa fa-bookmark" aria-hidden="true"></i><span>分類管理</span>'), posttypes_path ) %>
+          <%= link_to(sanitize('<i class="fa fa-bookmark" aria-hidden="true"></i><span>分類管理</span>'), posttypes_path ) %>
         </li>
         <li>
-          <%= link_to(raw('<i class="fa fa-child" aria-hidden="true"></i><span>帳戶管理</span>'), accounts_path) %>
+          <%= link_to(sanitize('<i class="fa fa-child" aria-hidden="true"></i><span>帳戶管理</span>'), accounts_path) %>
         </li>
       </ul>
     </li>
