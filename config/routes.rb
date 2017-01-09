@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get 'homeworkpost/returnhomework/:id', :to => 'homeworkposts#returnhomework', :as => 'returnhomework_homeworkpost'
   post 'homeworkpost/sendnotice', :to => 'homeworkposts#sendnotice', :as => 'sendnotice_homeworkpost'
   get 'userclassroomship/approved', :to => 'userclassroomships#approved'
-  get 'userclassroomship/mngindex', :to => 'userclassroomships#mngindex'
   
   resources :qr_codes, only: [:new, :create]
   

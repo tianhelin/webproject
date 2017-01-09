@@ -1,6 +1,6 @@
 class UserclassroomshipsController < ApplicationController
   before_action :authenticate_user!
-  before_action :checkadmin, :only => [:approved,:mngindex]
+  before_action :checkadmin , :only => [:index,:approved,:show]
   before_action :set_userclassroomship, :only => :show
   def index
     @classrooms = Classroom.all
@@ -54,10 +54,6 @@ class UserclassroomshipsController < ApplicationController
       @notice.save(notice_params)
       redirect_to userclassroomships_path
     end
-  end
-  
-  def mngindex
-    @classrooms = Classroom.all
   end
   
   def show

@@ -1,24 +1,10 @@
-<% if flash[:alert].present? %>
-  <div class="alert alert-danger"><%=flash[:alert] %></div>
-<% end %>
-<h1>加入新的課程</h1>
+<h1>審核管理</h1>
 <table class="table">
   <% @classrooms.each do |classroom| %>
-    <tr>
-      <td>
-        <%= classroom.name %>
-      </td>
-      <td>
-        <%= classroom.applydeadline %>
-      </td>
-      <td>
-        <% if current_user.classrooms.include?(classroom) == false %>
-          <%= link_to '加入此課程',{:controller =>'userclassroomships',:action => 'apply',:id => classroom.id}, :class =>'btn btn-default' %>
-        <% else %>
-          <%= '已經加入課程' %>
-        <% end %>
-      </td>
-    </tr>
+  <tr>
+    <td><%= link_to classroom.name,userclassroomship_path(classroom) %></td>
+    <td>待審核人數：<%= classroom.userclassroomships.where('approved=?',false).count %></td>
+  </tr>
   <% end %>
 </table>
 <%= link_to '回到課程管理', classrooms_path, :class => 'btn btn-default' %>

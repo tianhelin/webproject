@@ -14,7 +14,10 @@
   <body>
     <%= render "common/navbar" %>
     <div class="body-render">
-      <%= yield %>
+      <% if flash[:alert].present? %>
+        <div class="alert alert-danger"><%=flash[:alert] %></div>
+      <% end %>
+      <%= yield %>œ
     </div>
     <%= render "common/footer" %>
   </body>
