@@ -29,6 +29,7 @@ gem 'kaminari'
 gem 'bootstrap-sass'
 
 gem 'ckeditor'
+gem 'non-stupid-digest-assets'
 
 gem 'font-awesome-sass'
 
