@@ -17,6 +17,11 @@ class NoticesController < ApplicationController
   def create
     if params[:commit] == "送出全站通知"
       @recipient = User.all.ids
+      @recipient.each do |r|
+          @notice = current_user.notices.new(notice_params)
+          @notice[:recipient_id] = r
+          @notice.save
+      end
     else
       if params[:recipient_id] != nil
         @recipient = params[:recipient_id]
