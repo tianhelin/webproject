@@ -38,6 +38,8 @@ gem 'rqrcode-with-patches', '~> 0.5.4'
 gem 'pg'
 gem 'rails_12factor', group: :production
 
+
+gem 'sqlite3'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

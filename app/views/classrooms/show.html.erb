@@ -18,19 +18,21 @@
       <td class="text-center">標題</td>
       <td class="text-center">時間</td>
     </tr>
-    <% Post.where('posttype_id=?',Posttype.where('classroom_id=?',@classroom.id).first.id).each do |article| %>
-        <tr>
-          <td>
-            <a  href="<%= post_path(article) %>">
-              <%= article.topic %>
-            </a>
-          </td>
-          <td class="text-center">
-            <a  href="<%= post_path(article) %>">
-              <%= article.created_at.to_s(:short) %>
-            </a>
-          </td>
-        </tr>
+    <% if Post.where('posttype_id=?',Posttype.where('classroom_id=?',@classroom.id).first.id).first == nil %>
+      <% Post.where('posttype_id=?',Posttype.where('classroom_id=?',@classroom.id).first.id).each do |article| %>
+          <tr>
+            <td>
+              <a  href="<%= post_path(article) %>">
+                <%= article.topic %>
+              </a>
+            </td>
+            <td class="text-center">
+              <a  href="<%= post_path(article) %>">
+                <%= article.created_at.to_s(:short) %>
+              </a>
+            </td>
+          </tr>
+      <% end %>
     <% end %>
     <tr>
       <td><h2>未交作業</h2></td>
