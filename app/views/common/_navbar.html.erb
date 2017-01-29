@@ -53,13 +53,20 @@
   <% end %>
   <% else %>
     <li class="nav pull-right">
+      <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
+      <style media="screen" type="text/css">
+      .fb_iframe_widget span 
+      {
+        vertical-align: middle !important;
+      }
+    </style>
+    </li>
+    
+    <li class="nav pull-right">
       <%= link_to('登入', new_session_path(:user),:class => 'btn btn-primary') %>
     </li>
     <li class="nav pull-right">
       <%= link_to('註冊', new_registration_path(:user),:class => 'btn btn-primary') %>
-    </li>
-    <li class="nav pull-right">
-      <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
     </li>
   <% end %>
 </nav>
