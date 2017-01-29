@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   get 'qr_codes/create'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  
   resources :posts ,:posttypes ,:accounts, :notices, :classrooms,:userclassroomships,:homeworks, :homeworkposts
   post 'classroom/delete/:id', :to => 'classrooms#delete', :as => 'delete_classroom'
   get 'userclassroomship/apply/:id', :to => 'userclassroomships#apply',:as =>'userclassroomship_apply'
@@ -67,6 +68,5 @@ Rails.application.routes.draw do
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  #     #   end
 end

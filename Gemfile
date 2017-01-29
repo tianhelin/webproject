@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 gem 'kaminari'
 
@@ -35,11 +37,10 @@ gem 'font-awesome-sass'
 gem 'rqrcode-with-patches', '~> 0.5.4'
 # gem for generate QRcode
 
-gem 'pg'
 gem 'rails_12factor', group: :production
 
 
-gem 'sqlite3'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
