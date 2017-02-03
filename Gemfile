@@ -24,7 +24,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook','~> 1.4.0'
+gem 'rack-cors', :require => 'rack/cors'
 
 gem 'kaminari'
 
