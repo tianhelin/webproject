@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
   get 'qr_codes/new'
-
   get 'qr_codes/create'
-
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  resources :qr_codes, only: [:new, :create]
+  
+  devise_for :users
   
   resources :posts ,:posttypes ,:accounts, :notices, :classrooms,:userclassroomships,:homeworks, :homeworkposts
+  
+  get 'facebooktrans/code' , :to => 'facebooktrans#code', :as => 'facebook_code'
   post 'classroom/delete/:id', :to => 'classrooms#delete', :as => 'delete_classroom'
   get 'userclassroomship/apply/:id', :to => 'userclassroomships#apply',:as =>'userclassroomship_apply'
   get 'homeworkpost/returnhomework/:id', :to => 'homeworkposts#returnhomework', :as => 'returnhomework_homeworkpost'
   post 'homeworkpost/sendnotice', :to => 'homeworkposts#sendnotice', :as => 'sendnotice_homeworkpost'
   get 'userclassroomship/approved', :to => 'userclassroomships#approved'
-  
-  resources :qr_codes, only: [:new, :create]
   
   root :to => 'posts#index'
   

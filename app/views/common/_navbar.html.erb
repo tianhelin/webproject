@@ -53,7 +53,7 @@
   <% end %>
   <% else %>
     <li class="nav pull-right">
-      <%= link_to "Facebook 登入", user_facebook_omniauth_authorize_path ,:class => 'btn btn-primary' %>
+      <a href="#" class="btn btn-primary" id="facebook-login-btn">以Facebook登入</a>
     </li>
     <li class="nav pull-right">
       <%= link_to('登入', new_session_path(:user),:class => 'btn btn-primary') %>

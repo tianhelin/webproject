@@ -6,15 +6,14 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '94cbf54ec17524b83d15a98348959abb00569d185182a61ddb1f10f3872092a54462fbf61c27464c8f1f0790689379459390958ca05c719669094c8ce093ea01'
+  # config.secret_key = '9c5c2d64c411b035c9f8d00397e957916f709be181d5dbd52b9fe5544681e9bc3aa20f7844a52ed8205626e9b0fd1c69705cc9cc6f319ad6fd795d8fa6d57353'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
-  
-  config.secret_key = '0687a5c4a7f9882e680f5ab499c0280efb1bd6d837f5b6405765ff0ebbe3c676c0636b872877e34fee19977d6e392acff9ba8bb4c5ff6f9a6fc3ee54fb7dc855'
+
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
@@ -35,7 +34,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-   config.authentication_keys = [:accountname]
+  config.authentication_keys = [:accountname]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -109,7 +108,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '4c619b5bd84853df74d7c4539165d008078d09f8eb4450c36e0c1068ad2bd378f5bf8d6c25c4c7c68757578447b499c4e3aeaf67acad3fa634ad9d97504e4203'
+  # config.pepper = '59a9d50d749bb8717428aaa5fb15e843fb0cef0697e9e54088153efb7293bb81f83c1467c0b8c823226d04db04bd4676b715c5a371649dcc24e1d82b2ae04f55'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -249,8 +248,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :facebook, '1806218816310641','ed830c5d4ad79b0f7f373e31b1e8d0aa',
-                  callback_url: "http://localhost:3000/"
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
@@ -273,5 +271,4 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-  
 end

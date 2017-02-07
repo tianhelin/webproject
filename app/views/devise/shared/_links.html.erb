@@ -18,8 +18,3 @@
   <%= link_to "尚未收到解鎖訊息?", new_unlock_path(resource_name) %><br />
 <% end -%>
 
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "以 #{OmniAuth::Utils.camelize(provider)} 登入", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
-<% end -%>

@@ -63,9 +63,28 @@ $(document).on('turbolinks:load', function() {
      $('.userclassroomship-checkbox').children().children('i').removeClass('hidden');
   });
   
-    $('a.userclassroomship.select-cancel-btn').click(function() {
-     $('table.userclassroomship-table tr.userclassroomship-tr').removeClass('userclassroomship-active');
-     $('.userclassroomship-checkbox').children().children('input').prop('checked',false);
-     $('.userclassroomship-checkbox').children().children('i').addClass('hidden');
+  $('a.userclassroomship.select-cancel-btn').click(function() {
+    $('table.userclassroomship-table tr.userclassroomship-tr').removeClass('userclassroomship-active');
+    $('.userclassroomship-checkbox').children().children('input').prop('checked',false);
+    $('.userclassroomship-checkbox').children().children('i').addClass('hidden');
   });
+
+  $('#facebook-login-btn').click(function(){
+    event.preventDefault();
+    FB.login(function(response) {
+      if (response.status === 'connected') {
+      FB.api('/me?fields=id,name,email', function(response) {
+        var myurl = window.location.href;
+        var myemail = 'email='+response.email+'&'
+        var myid = 'uid='+response.id+'&'
+        var myname = 'name='+response.name
+        var rooturl = window.location.toString().replace(/^(.*\/\/[^\/?#]*).*$/,"$1")
+        document.location.href= rooturl+'/facebooktrans/code?'+myemail+myid+myname
+      });
+      // Logged into your app and Facebook.
+      } else {
+        alert('授權失敗，您必須同意才能使用Facebook資料註冊登入！')
+      }
+    }, {scope: 'email'});
+  });  
 });
