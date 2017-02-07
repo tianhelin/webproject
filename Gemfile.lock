@@ -116,6 +116,7 @@ GEM
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
+    pg (0.19.0)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -208,6 +209,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   kaminari
+  pg
   rails
   rails_12factor
   rqrcode-with-patches (~> 0.5.4)

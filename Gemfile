@@ -36,7 +36,7 @@ gem 'rqrcode-with-patches', '~> 0.5.4'
 # gem for generate QRcode
 
 gem 'rails_12factor', group: :production
-
+gem 'pg'
 
 
 # Use ActiveModel has_secure_password
