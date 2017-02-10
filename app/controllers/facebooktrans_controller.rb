@@ -8,13 +8,9 @@ class FacebooktransController < ApplicationController
       user.uid = params[:uid]
       user.provider = 'facebook'
       user.save!(user_params)
-      if user.persisted?
-        sign_in(User.where(uid: params[:uid]).first, scope: :user)
-        redirect_to posts_path
-      else
-        redirect_to new_user_registration_url
-      end
-    end		
+    end	
+    sign_in(User.where(uid: params[:uid]).first)
+    redirect_to posts_path
 	end
 
 	private
