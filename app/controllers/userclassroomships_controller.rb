@@ -14,8 +14,8 @@ class UserclassroomshipsController < ApplicationController
       redirect_to classrooms_path
     else
       params[:userclassroomship][:user_id].each do |user_id|
-        @userclassroomship = Userclassroomship.where('user_id =? AND classroom_id=?', user_id,params[:userclassroomship][:classroom_id]).first
         if user_id != ""
+          @userclassroomship = Userclassroomship.where('user_id =? AND classroom_id=?', user_id,params[:userclassroomship][:classroom_id]).first
           @userclassroomship.approved = true
           @userclassroomship.update(userclassroomship_params)
           Classroom.find(params[:userclassroomship][:classroom_id].first).homeworks.each do |homework|
